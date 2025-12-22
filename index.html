@@ -1,0 +1,3451 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="format-detection" content="telephone=no">
+    <title>衡點應聘履歷表</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html {
+            -webkit-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+        }
+
+        body {
+            font-family: 'Noto Sans TC', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft JhengHei', sans-serif;
+            background: linear-gradient(135deg, #e2ede6 0%, #daedec 50%, #faece8 100%);
+            min-height: 100vh;
+            padding: 15px;
+            position: relative;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        @media (min-width: 768px) {
+            body {
+                padding: 20px;
+            }
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(122, 193, 154, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(159, 204, 204, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(242, 172, 152, 0.06) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 24px;
+            box-shadow: 0 20px 60px rgba(95, 132, 111, 0.15);
+            overflow: hidden;
+            position: relative;
+            z-index: 1;
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                border-radius: 16px;
+            }
+        }
+
+        .header {
+            background: linear-gradient(135deg, #7ac19a 0%, #9fcccc 100%);
+            padding: 40px 20px;
+            text-align: center;
+            color: #ffffff;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 200px;
+            height: 200px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+        }
+
+        .header::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -5%;
+            width: 150px;
+            height: 150px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 50%;
+        }
+
+        .header h1 {
+            font-size: 26px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .header p {
+            font-size: 15px;
+            opacity: 0.95;
+            position: relative;
+            z-index: 1;
+        }
+
+        .section {
+            padding: 25px 15px;
+            display: none;
+        }
+
+        @media (min-width: 768px) {
+            .section {
+                padding: 30px 20px;
+            }
+        }
+
+        .section.active {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .section-title {
+            font-size: 22px;
+            color: #5f846f;
+            margin-bottom: 25px;
+            font-weight: bold;
+            border-left: 5px solid #7ac19a;
+            padding-left: 15px;
+            position: relative;
+        }
+
+        .question-card {
+            background: linear-gradient(135deg, #fcf4e3 0%, #fffbf0 100%);
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 15px;
+            border: 2px solid #ffe08b;
+            box-shadow: 0 4px 12px rgba(186, 158, 96, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        @media (min-width: 768px) {
+            .question-card {
+                padding: 24px;
+                margin-bottom: 18px;
+            }
+        }
+
+        .question-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(186, 158, 96, 0.12);
+        }
+
+        @media (hover: none) {
+            .question-card:hover {
+                transform: none;
+            }
+        }
+
+        .question-number {
+            display: inline-block;
+            background: #ba9e60;
+            color: #ffffff;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 28px;
+            font-size: 14px;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .question-text {
+            font-size: 15px;
+            color: #5f846f;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .toggle-buttons {
+            display: flex;
+            gap: 8px;
+        }
+
+        @media (min-width: 768px) {
+            .toggle-buttons {
+                gap: 10px;
+            }
+        }
+
+        .toggle-btn {
+            flex: 1;
+            padding: 14px 16px;
+            border: none;
+            background: #ffffff;
+            border-radius: 16px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: 700;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            color: #5f846f;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            position: relative;
+            overflow: hidden;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            -webkit-user-select: none;
+            user-select: none;
+            touch-action: manipulation;
+        }
+
+        @media (min-width: 768px) {
+            .toggle-btn {
+                padding: 16px 20px;
+            }
+        }
+
+        .toggle-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(255, 255, 255, 0.8) 0%, transparent 70%);
+            transform: scale(0);
+            transition: transform 0.5s;
+        }
+
+        .toggle-btn:hover::before {
+            transform: scale(2);
+        }
+
+        .toggle-btn:hover {
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .toggle-btn span {
+            position: relative;
+            z-index: 1;
+            display: inline-block;
+            transition: transform 0.3s;
+        }
+
+        .toggle-btn:hover span {
+            transform: scale(1.1);
+        }
+
+        .toggle-btn.yes {
+            background: linear-gradient(135deg, #e2ede6 0%, #daedec 100%);
+        }
+
+        .toggle-btn.yes:hover {
+            background: linear-gradient(135deg, #daedec 0%, #c8e3de 100%);
+        }
+
+        .toggle-btn.no {
+            background: linear-gradient(135deg, #faece8 0%, #f5e0db 100%);
+        }
+
+        .toggle-btn.no:hover {
+            background: linear-gradient(135deg, #f5e0db 0%, #edd4cd 100%);
+        }
+
+        .toggle-btn.active.yes {
+            background: linear-gradient(135deg, #7ac19a 0%, #9fcccc 100%);
+            color: #ffffff;
+            box-shadow: 0 10px 30px rgba(122, 193, 154, 0.5), 
+                        0 0 0 4px rgba(122, 193, 154, 0.2);
+            transform: translateY(-2px) scale(1.05);
+        }
+
+        .toggle-btn.active.yes::after {
+            content: '✓';
+            position: absolute;
+            top: 8px;
+            right: 12px;
+            font-size: 14px;
+            animation: checkBounce 0.5s;
+        }
+
+        @keyframes checkBounce {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.3); }
+        }
+
+        .toggle-btn.active.no {
+            background: linear-gradient(135deg, #f2ac98 0%, #f2c0b4 100%);
+            color: #ffffff;
+            box-shadow: 0 10px 30px rgba(242, 172, 152, 0.5),
+                        0 0 0 4px rgba(242, 172, 152, 0.2);
+            transform: translateY(-2px) scale(1.05);
+        }
+
+        .toggle-btn.active.no::after {
+            content: '✓';
+            position: absolute;
+            top: 8px;
+            right: 12px;
+            font-size: 14px;
+            animation: checkBounce 0.5s;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 15px;
+            color: #5f846f;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .form-label.required::after {
+            content: " *";
+            color: #f2ac98;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 14px 16px;
+            border: 2px solid #e2ede6;
+            border-radius: 10px;
+            font-size: 15px;
+            transition: all 0.3s;
+            background: #ffffff;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #7ac19a;
+            background: #f8fcfa;
+            box-shadow: 0 0 0 4px rgba(122, 193, 154, 0.1);
+        }
+
+        .file-upload {
+            border: 2px dashed #9fcccc;
+            border-radius: 16px;
+            padding: 35px 20px;
+            text-align: center;
+            background: linear-gradient(135deg, #daedec 0%, #e8f5f4 100%);
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-bottom: 15px;
+        }
+
+        .file-upload:hover {
+            border-color: #7ac19a;
+            background: linear-gradient(135deg, #e2ede6 0%, #f0f7f5 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(159, 204, 204, 0.15);
+        }
+
+        .file-upload input {
+            display: none;
+        }
+
+        .file-upload-icon {
+            font-size: 40px;
+            color: #9fcccc;
+            margin-bottom: 10px;
+        }
+
+        .file-upload-text {
+            color: #66888e;
+            font-size: 14px;
+        }
+
+        .file-size-warning {
+            color: #f2ac98;
+            font-size: 12px;
+            margin-top: 5px;
+            font-weight: 600;
+        }
+
+        .total-size-display {
+            margin-top: 10px;
+            padding: 8px 12px;
+            background: linear-gradient(135deg, #fcf4e3 0%, #fffbf0 100%);
+            border-radius: 8px;
+            border: 1px solid #ffe08b;
+            font-size: 13px;
+            color: #5f846f;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .total-size-display.warning {
+            background: linear-gradient(135deg, #faece8 0%, #fff5f2 100%);
+            border-color: #f2ac98;
+            color: #c67566;
+        }
+
+        .file-name {
+            background: #e2ede6;
+            padding: 10px 15px;
+            border-radius: 8px;
+            margin-top: 10px;
+            font-size: 13px;
+            color: #5f846f;
+            display: none;
+        }
+
+        .file-name.show {
+            display: block;
+        }
+
+        .file-preview-container {
+            display: none;
+            margin-top: 15px;
+            padding: 15px;
+            background: #f8fcfa;
+            border-radius: 12px;
+            border: 2px solid #e2ede6;
+        }
+
+        .file-preview-container.show {
+            display: block;
+        }
+
+        .file-preview-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: #5f846f;
+            margin-bottom: 10px;
+        }
+
+        .file-preview-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .file-preview-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px;
+            background: #ffffff;
+            border-radius: 8px;
+            border: 1px solid #e2ede6;
+        }
+
+        .file-preview-icon {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            border-radius: 6px;
+            border: 1px solid #e2ede6;
+        }
+
+        .file-preview-icon.pdf {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #f2ac98 0%, #ffe08b 100%);
+            color: #ffffff;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .file-preview-icon.doc {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #7ac19a 0%, #9fcccc 100%);
+            color: #ffffff;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .file-preview-info {
+            flex: 1;
+        }
+
+        .file-preview-name {
+            font-size: 13px;
+            font-weight: 600;
+            color: #5f846f;
+            margin-bottom: 3px;
+            word-break: break-all;
+        }
+
+        .file-preview-size {
+            font-size: 11px;
+            color: #808080;
+        }
+
+        .file-preview-remove {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: #f2ac98;
+            color: #ffffff;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            line-height: 24px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .file-preview-remove:hover {
+            background: #e09684;
+            transform: scale(1.1);
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 30px;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 16px 20px;
+            border: none;
+            border-radius: 16px;
+            font-size: 16px;
+            font-weight: 800;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+            overflow: hidden;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            -webkit-user-select: none;
+            user-select: none;
+            touch-action: manipulation;
+        }
+
+        @media (min-width: 768px) {
+            .btn {
+                padding: 18px 24px;
+                font-size: 17px;
+            }
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.4);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .btn:hover::before {
+            width: 400px;
+            height: 400px;
+        }
+
+        .btn:hover {
+            transform: translateY(-5px) scale(1.02);
+        }
+
+        .btn:active {
+            transform: translateY(-2px) scale(0.98);
+        }
+
+        .btn span {
+            position: relative;
+            z-index: 1;
+        }
+
+        .btn-prev {
+            background: linear-gradient(135deg, #66888e 0%, #5f846f 100%);
+            color: #ffffff;
+            box-shadow: 0 6px 20px rgba(102, 136, 142, 0.4);
+        }
+
+        .btn-prev:hover {
+            background: linear-gradient(135deg, #5f846f 0%, #4a6859 100%);
+            box-shadow: 0 10px 35px rgba(102, 136, 142, 0.5);
+        }
+
+        .btn-prev::after {
+            content: '←';
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 20px;
+            transition: left 0.3s;
+        }
+
+        .btn-prev:hover::after {
+            left: 15px;
+        }
+
+        .btn-next {
+            background: linear-gradient(135deg, #7ac19a 0%, #9fcccc 100%);
+            color: #ffffff;
+            box-shadow: 0 6px 20px rgba(122, 193, 154, 0.4);
+        }
+
+        .btn-next:hover {
+            background: linear-gradient(135deg, #9fcccc 0%, #7ac19a 100%);
+            box-shadow: 0 10px 35px rgba(122, 193, 154, 0.5);
+        }
+
+        .btn-next::after {
+            content: '→';
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 20px;
+            transition: right 0.3s;
+        }
+
+        .btn-next:hover::after {
+            right: 15px;
+        }
+
+        .btn-submit {
+            background: linear-gradient(135deg, #f2ac98 0%, #ffe08b 100%);
+            color: #5f846f;
+            box-shadow: 0 6px 20px rgba(242, 172, 152, 0.4);
+        }
+
+        .btn-submit:hover {
+            background: linear-gradient(135deg, #ffe08b 0%, #f2ac98 100%);
+            box-shadow: 0 10px 35px rgba(255, 224, 139, 0.6);
+        }
+
+        .btn-submit::after {
+            content: '✓';
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%) scale(0);
+            font-size: 24px;
+            transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+            color: #5f846f;
+        }
+
+        .btn-submit:hover::after {
+            transform: translateY(-50%) scale(1);
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .progress-bar {
+            height: 6px;
+            background: rgba(255, 255, 255, 0.3);
+            margin: 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progress-bar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, 
+                rgba(122, 193, 154, 0.1) 0%, 
+                rgba(159, 204, 204, 0.1) 100%);
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #7ac19a 0%, #9fcccc 50%, #f2ac98 100%);
+            transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 0;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 0 20px rgba(122, 193, 154, 0.5);
+        }
+
+        .progress-fill::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                rgba(255, 255, 255, 0.3) 50%, 
+                transparent 100%);
+            animation: shimmerProgress 2s infinite;
+        }
+
+        @keyframes shimmerProgress {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .progress-fill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 8px;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+            filter: blur(2px);
+        }
+
+        .progress-container {
+            position: relative;
+            background: linear-gradient(180deg, rgba(0,0,0,0.03) 0%, transparent 100%);
+        }
+
+        .progress-steps {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: absolute;
+            top: -2px;
+            left: 0;
+            right: 0;
+            z-index: 2;
+            padding: 0 0;
+        }
+
+        .progress-step {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #ffffff;
+            border: 3px solid #e2ede6;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .progress-step.active {
+            background: linear-gradient(135deg, #7ac19a 0%, #9fcccc 100%);
+            border-color: #7ac19a;
+            transform: scale(1.4);
+            box-shadow: 0 4px 15px rgba(122, 193, 154, 0.5);
+        }
+
+        .progress-step.completed {
+            background: linear-gradient(135deg, #7ac19a 0%, #9fcccc 100%);
+            border-color: #7ac19a;
+            box-shadow: 0 2px 8px rgba(122, 193, 154, 0.3);
+        }
+
+        .progress-step.completed::after {
+            content: '✓';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #ffffff;
+            font-size: 8px;
+            font-weight: bold;
+        }
+
+        @media (max-width: 480px) {
+            .progress-step {
+                width: 10px;
+                height: 10px;
+                border-width: 2px;
+            }
+
+            .progress-step.active {
+                transform: scale(1.3);
+            }
+        }
+
+        .value-slider-container {
+            background: linear-gradient(135deg, #ffffff 0%, #f8fcfa 100%);
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            border: 2px solid #e2ede6;
+            transition: all 0.3s ease;
+        }
+
+        .value-slider-container:hover {
+            box-shadow: 0 6px 20px rgba(122, 193, 154, 0.15);
+            border-color: #7ac19a;
+        }
+
+        .value-item {
+            margin-bottom: 25px;
+            padding: 18px;
+            background: linear-gradient(135deg, #fafcfb 0%, #ffffff 100%);
+            border-radius: 12px;
+            border: 1px solid #e8f0ed;
+            transition: all 0.3s ease;
+        }
+
+        .value-item:hover {
+            background: linear-gradient(135deg, #f0f7f5 0%, #fafcfb 100%);
+            border-color: #7ac19a;
+            transform: translateY(-2px);
+        }
+
+        .value-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .value-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .value-label {
+            font-weight: 700;
+            color: #5f846f;
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .value-label::before {
+            content: '●';
+            color: #7ac19a;
+            font-size: 12px;
+        }
+
+        .value-display {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .value-number {
+            font-weight: 800;
+            color: #7ac19a;
+            font-size: 22px;
+            min-width: 30px;
+            text-align: center;
+            text-shadow: 0 2px 4px rgba(122, 193, 154, 0.2);
+        }
+
+        .value-max {
+            font-size: 13px;
+            color: #9fcccc;
+            font-weight: 600;
+        }
+
+        .slider {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 10px;
+            border-radius: 5px;
+            background: linear-gradient(to right, 
+                #e2ede6 0%, 
+                #9fcccc 50%, 
+                #7ac19a 100%);
+            outline: none;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .slider:hover {
+            height: 12px;
+        }
+
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #7ac19a 0%, #9fcccc 100%);
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(122, 193, 154, 0.5);
+            transition: all 0.3s;
+            border: 3px solid #ffffff;
+        }
+
+        .slider::-webkit-slider-thumb:hover {
+            transform: scale(1.2);
+            box-shadow: 0 6px 25px rgba(122, 193, 154, 0.7);
+        }
+
+        .slider::-webkit-slider-thumb:active {
+            transform: scale(1.3);
+            box-shadow: 0 8px 30px rgba(122, 193, 154, 0.8);
+        }
+
+        .slider::-moz-range-thumb {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #7ac19a 0%, #9fcccc 100%);
+            cursor: pointer;
+            border: 3px solid #ffffff;
+            box-shadow: 0 4px 15px rgba(122, 193, 154, 0.5);
+            transition: all 0.3s;
+        }
+
+        .slider::-moz-range-thumb:hover {
+            transform: scale(1.2);
+            box-shadow: 0 6px 25px rgba(122, 193, 154, 0.7);
+        }
+
+        .slider::-moz-range-thumb:active {
+            transform: scale(1.3);
+            box-shadow: 0 8px 30px rgba(122, 193, 154, 0.8);
+        }
+
+        .slider-scale {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 8px;
+            padding: 0 5px;
+        }
+
+        .slider-scale-item {
+            font-size: 11px;
+            color: #9fcccc;
+            font-weight: 600;
+        }
+
+        @media (max-width: 480px) {
+            .value-item {
+                padding: 15px;
+                margin-bottom: 20px;
+            }
+
+            .value-label {
+                font-size: 14px;
+            }
+
+            .value-number {
+                font-size: 20px;
+            }
+
+            .slider {
+                height: 8px;
+            }
+
+            .slider::-webkit-slider-thumb {
+                width: 24px;
+                height: 24px;
+            }
+
+            .slider::-moz-range-thumb {
+                width: 24px;
+                height: 24px;
+            }
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 40px;
+        }
+
+        .loading.show {
+            display: block;
+        }
+
+        .spinner {
+            border: 4px solid #e2ede6;
+            border-top: 4px solid #7ac19a;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .success-message {
+            display: none;
+            text-align: center;
+            padding: 40px;
+        }
+
+        .success-message.show {
+            display: block;
+        }
+
+        .success-icon {
+            font-size: 60px;
+            color: #7ac19a;
+            margin-bottom: 20px;
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        @media (min-width: 768px) {
+            .radio-group {
+                gap: 15px;
+            }
+        }
+
+        .radio-option {
+            flex: 1;
+        }
+
+        .radio-option input[type="radio"] {
+            display: none;
+        }
+
+        .radio-label {
+            display: block;
+            padding: 14px 16px;
+            border: 3px solid transparent;
+            border-radius: 16px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            color: #5f846f;
+            font-weight: 700;
+            background: linear-gradient(135deg, #ffffff 0%, #f8fcfa 100%);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+            position: relative;
+            overflow: hidden;
+            letter-spacing: 0.3px;
+            -webkit-user-select: none;
+            user-select: none;
+            touch-action: manipulation;
+        }
+
+        @media (min-width: 768px) {
+            .radio-label {
+                padding: 16px 20px;
+            }
+        }
+
+        .radio-label::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(122, 193, 154, 0.15), transparent);
+            transition: left 0.6s;
+        }
+
+        .radio-label:hover::before {
+            left: 100%;
+        }
+
+        .radio-label:hover {
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 8px 25px rgba(122, 193, 154, 0.2);
+            border-color: #7ac19a;
+        }
+
+        .radio-label span {
+            position: relative;
+            z-index: 1;
+            display: inline-block;
+            transition: transform 0.3s;
+        }
+
+        .radio-label:hover span {
+            transform: scale(1.1);
+        }
+
+        .radio-option input[type="radio"]:checked + .radio-label {
+            background: linear-gradient(135deg, #7ac19a 0%, #9fcccc 100%);
+            color: #ffffff;
+            border-color: #7ac19a;
+            box-shadow: 0 10px 30px rgba(122, 193, 154, 0.4),
+                        0 0 0 4px rgba(122, 193, 154, 0.2);
+            transform: scale(1.05);
+        }
+
+        .radio-option input[type="radio"]:checked + .radio-label::before {
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+        }
+
+        .radio-option input[type="radio"]:checked + .radio-label::after {
+            content: '✓';
+            position: absolute;
+            top: 8px;
+            right: 12px;
+            font-size: 16px;
+            animation: checkPop 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+        }
+
+        @keyframes checkPop {
+            0% { transform: scale(0) rotate(-45deg); opacity: 0; }
+            50% { transform: scale(1.3) rotate(5deg); }
+            100% { transform: scale(1) rotate(0deg); opacity: 1; }
+        }
+
+        .email-suggestion-item {
+            padding: 12px 16px;
+            cursor: pointer;
+            transition: all 0.2s;
+            color: #5f846f;
+            font-size: 14px;
+            border-bottom: 1px solid #e2ede6;
+            -webkit-user-select: none;
+            user-select: none;
+            touch-action: manipulation;
+            background: #ffffff;
+        }
+
+        @media (min-width: 768px) {
+            .email-suggestion-item {
+                font-size: 15px;
+            }
+        }
+
+        .email-suggestion-item:last-child {
+            border-bottom: none;
+        }
+
+        .email-suggestion-item:hover {
+            background: linear-gradient(135deg, #e2ede6 0%, #daedec 100%);
+            padding-left: 20px;
+        }
+
+        .email-suggestion-item strong {
+            color: #7ac19a;
+            font-weight: 700;
+        }
+
+        #emailSuggestions {
+            max-height: 250px;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: thin;
+            scrollbar-color: #7ac19a #e2ede6;
+        }
+
+        #emailSuggestions::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        #emailSuggestions::-webkit-scrollbar-track {
+            background: #e2ede6;
+            border-radius: 0 0 8px 0;
+        }
+
+        #emailSuggestions::-webkit-scrollbar-thumb {
+            background: #7ac19a;
+            border-radius: 4px;
+        }
+
+        #emailSuggestions::-webkit-scrollbar-thumb:hover {
+            background: #5f846f;
+        }
+
+        .talent-chart-container {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        @media (min-width: 768px) {
+            .talent-chart-container {
+                padding: 30px;
+            }
+        }
+
+        #talentChart {
+            max-width: 100%;
+            height: auto !important;
+            max-height: 350px;
+            display: block;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 480px) {
+            #talentChart {
+                max-height: 280px;
+            }
+        }
+
+        .talent-chart-header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .talent-chart-title {
+            font-size: 24px;
+            font-weight: bold;
+            color: #5f846f;
+            margin-bottom: 8px;
+        }
+
+        .talent-chart-subtitle {
+            font-size: 13px;
+            color: #808080;
+            letter-spacing: 0.5px;
+        }
+
+        .talent-score-bars {
+            margin-top: 30px;
+        }
+
+        .talent-score-item {
+            margin-bottom: 20px;
+        }
+
+        .talent-score-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .talent-label {
+            font-size: 15px;
+            color: #5f846f;
+            font-weight: 700;
+        }
+
+        .talent-value {
+            font-size: 18px;
+            font-weight: 800;
+            color: #7ac19a;
+        }
+
+        .talent-bar {
+            height: 32px;
+            background: linear-gradient(135deg, #f8fcfa 0%, #e8f5f4 100%);
+            border-radius: 16px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .talent-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #7ac19a 0%, #9fcccc 100%);
+            border-radius: 16px;
+            transition: width 1.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 15px;
+            box-shadow: 0 2px 8px rgba(122, 193, 154, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .talent-bar-fill::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        .talent-score {
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: bold;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 1;
+        }
+
+        .talent-description {
+            font-size: 12px;
+            color: #808080;
+            margin-top: 5px;
+            font-style: italic;
+        }
+
+        .recommendation-box {
+            background: linear-gradient(135deg, #faece8 0%, #fff5f2 100%);
+            border-radius: 16px;
+            padding: 25px;
+            margin-bottom: 25px;
+            border: 2px solid #f2ac98;
+            box-shadow: 0 4px 20px rgba(242, 172, 152, 0.15);
+        }
+
+        .recommendation-title {
+            color: #c67566;
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .recommendation-content {
+            color: #5f846f;
+            font-size: 15px;
+            line-height: 1.8;
+        }
+
+        .score-interpretation {
+            background: linear-gradient(135deg, #fcf4e3 0%, #fffbf0 100%);
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 20px;
+            border: 2px solid #ffe08b;
+        }
+
+        .score-interpretation-title {
+            color: #ba9e60;
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .score-interpretation-list {
+            color: #66888e;
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        .score-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #7ac19a 0%, #9fcccc 100%);
+            color: #ffffff;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-left: 8px;
+        }
+
+        textarea.form-input {
+            resize: vertical;
+            min-height: 80px;
+            font-family: inherit;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🏋️ 衡點應聘履歷表</h1>
+            <p>歡迎加入我們的團隊</p>
+        </div>
+
+        <div class="progress-container">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <div class="progress-steps">
+                <div class="progress-step" id="step1"></div>
+                <div class="progress-step" id="step2"></div>
+                <div class="progress-step" id="step3"></div>
+                <div class="progress-step" id="step4"></div>
+                <div class="progress-step" id="step5"></div>
+                <div class="progress-step" id="step6"></div>
+            </div>
+        </div>
+
+        <!-- Section 1: 應徵職位 -->
+        <div class="section active" id="section1">
+            <div style="text-align: center; margin-bottom: 25px;">
+                <div style="display: inline-block; background: linear-gradient(135deg, #7ac19a 0%, #9fcccc 100%); padding: 12px 30px; border-radius: 25px; margin-bottom: 15px;">
+                    <h2 style="color: #ffffff; font-size: 20px; font-weight: bold; margin: 0;">💼 應徵職位</h2>
+                </div>
+                <p style="color: #808080; font-size: 14px; line-height: 1.8;">
+                    請選擇您想應徵的職位與專長領域
+                </p>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label required">您想應徵的職位</label>
+                <div class="radio-group" style="flex-direction: column; gap: 10px;">
+                    <div class="radio-option">
+                        <input type="radio" id="position_trainer" name="position" value="重訓教練" onchange="togglePositionDetails('trainer')">
+                        <label class="radio-label" for="position_trainer"><span>💪 重訓教練</span></label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="position_pilates" name="position" value="器械皮拉提斯教練" onchange="togglePositionDetails('pilates')">
+                        <label class="radio-label" for="position_pilates"><span>🧘 器械皮拉提斯教練</span></label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="position_stretch" name="position" value="伸展師" onchange="togglePositionDetails('stretch')">
+                        <label class="radio-label" for="position_stretch"><span>🤸 伸展師</span></label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="position_ai" name="position" value="AI分析師" onchange="togglePositionDetails('ai')">
+                        <label class="radio-label" for="position_ai"><span>🔬 AI分析師</span></label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group" id="trainer_specialties" style="display: none;">
+                <label class="form-label required">您的興趣與專長(可複選,最多兩項)</label>
+                <p style="color: #808080; font-size: 13px; margin-bottom: 12px;">請選擇您最專業的領域</p>
+                <div style="display: flex; flex-direction: column; gap: 10px;">
+                    <label style="display: flex; align-items: center; padding: 12px 16px; background: linear-gradient(135deg, #ffffff 0%, #f8fcfa 100%); border: 2px solid #e2ede6; border-radius: 12px; cursor: pointer; transition: all 0.3s;">
+                        <input type="checkbox" name="specialty" value="矯正性訓練教學" onchange="limitSpecialtySelection(this)" style="margin-right: 10px; width: 18px; height: 18px; cursor: pointer;">
+                        <span style="color: #5f846f; font-weight: 600;">矯正性訓練教學</span>
+                    </label>
+                    <label style="display: flex; align-items: center; padding: 12px 16px; background: linear-gradient(135deg, #ffffff 0%, #f8fcfa 100%); border: 2px solid #e2ede6; border-radius: 12px; cursor: pointer; transition: all 0.3s;">
+                        <input type="checkbox" name="specialty" value="功能性訓練教學" onchange="limitSpecialtySelection(this)" style="margin-right: 10px; width: 18px; height: 18px; cursor: pointer;">
+                        <span style="color: #5f846f; font-weight: 600;">功能性訓練教學</span>
+                    </label>
+                    <label style="display: flex; align-items: center; padding: 12px 16px; background: linear-gradient(135deg, #ffffff 0%, #f8fcfa 100%); border: 2px solid #e2ede6; border-radius: 12px; cursor: pointer; transition: all 0.3s;">
+                        <input type="checkbox" name="specialty" value="增肌訓練教學" onchange="limitSpecialtySelection(this)" style="margin-right: 10px; width: 18px; height: 18px; cursor: pointer;">
+                        <span style="color: #5f846f; font-weight: 600;">增肌訓練教學</span>
+                    </label>
+                    <label style="display: flex; align-items: center; padding: 12px 16px; background: linear-gradient(135deg, #ffffff 0%, #f8fcfa 100%); border: 2px solid #e2ede6; border-radius: 12px; cursor: pointer; transition: all 0.3s;">
+                        <input type="checkbox" name="specialty" value="力量訓練教學" onchange="limitSpecialtySelection(this)" style="margin-right: 10px; width: 18px; height: 18px; cursor: pointer;">
+                        <span style="color: #5f846f; font-weight: 600;">力量訓練教學</span>
+                    </label>
+                    <label style="display: flex; align-items: center; padding: 12px 16px; background: linear-gradient(135deg, #ffffff 0%, #f8fcfa 100%); border: 2px solid #e2ede6; border-radius: 12px; cursor: pointer; transition: all 0.3s;">
+                        <input type="checkbox" name="specialty" value="筋膜滾筒放鬆教學" onchange="limitSpecialtySelection(this)" style="margin-right: 10px; width: 18px; height: 18px; cursor: pointer;">
+                        <span style="color: #5f846f; font-weight: 600;">筋膜滾筒放鬆教學</span>
+                    </label>
+                    <div>
+                        <label style="display: flex; align-items: center; padding: 12px 16px; background: linear-gradient(135deg, #ffffff 0%, #f8fcfa 100%); border: 2px solid #e2ede6; border-radius: 12px; cursor: pointer; transition: all 0.3s;">
+                            <input type="checkbox" id="specialty_other_check" name="specialty" value="其他" onchange="limitSpecialtySelection(this); toggleOtherSpecialty()" style="margin-right: 10px; width: 18px; height: 18px; cursor: pointer;">
+                            <span style="color: #5f846f; font-weight: 600;">其他</span>
+                        </label>
+                        <input type="text" id="specialty_other_text" class="form-input" placeholder="請說明其他專長" style="margin-top: 8px; display: none;">
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group" id="ai_medical_background" style="display: none;">
+                <label class="form-label required">您是否有運動醫學或物理治療師相關背景?</label>
+                <div class="radio-group">
+                    <div class="radio-option" style="flex: 1;">
+                        <input type="radio" id="medical_yes" name="medicalBackground" value="是">
+                        <label class="radio-label" for="medical_yes"><span>是</span></label>
+                    </div>
+                    <div class="radio-option" style="flex: 1;">
+                        <input type="radio" id="medical_no" name="medicalBackground" value="否">
+                        <label class="radio-label" for="medical_no"><span>否</span></label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nav-buttons">
+                <button class="btn btn-next" onclick="validatePositionAndNext()"><span>下一步</span></button>
+            </div>
+        </div>
+
+        <!-- Section 1b: 天賦測評 -->
+        <div class="section" id="section1b">
+            <div style="text-align: center; margin-bottom: 25px;">
+                <div style="display: inline-block; background: linear-gradient(135deg, #7ac19a 0%, #9fcccc 100%); padding: 12px 30px; border-radius: 25px; margin-bottom: 15px;">
+                    <h2 style="color: #ffffff; font-size: 20px; font-weight: bold; margin: 0;">✨ 探索您的天賦特質</h2>
+                </div>
+                <p style="color: #808080; font-size: 14px; line-height: 1.8;">
+                    請根據您的真實想法選擇「是」或「否」<br>
+                    每個人都有獨特天賦,這份測評能凸顯優勢,讓你開心做事、自在展現實力
+                </p>
+            </div>
+            
+            <div id="personalityQuestions"></div>
+
+            <div class="nav-buttons">
+                <button class="btn btn-prev" onclick="prevSection('1b')"><span>上一步</span></button>
+                <button class="btn btn-next" onclick="analyzePersonality()"><span>完成分析</span></button>
+            </div>
+        </div>
+
+        <!-- 分析中 -->
+        <div class="section" id="sectionAnalyzing">
+            <div style="text-align: center; padding: 40px 20px;">
+                <div class="spinner"></div>
+                <h2 style="color: #5f846f; font-size: 20px; margin-bottom: 15px; font-weight: bold;">正在分析您的人格特質...</h2>
+                <p style="color: #808080; font-size: 15px; line-height: 1.8;">
+                    系統正在根據您的回答<br>
+                    計算專屬於您的天賦圖譜
+                </p>
+            </div>
+        </div>
+
+        <!-- 天賦圖分析結果 -->
+        <div class="section" id="sectionResult">
+            <div class="section-title">🎯 您的天賦圖譜</div>
+            
+            <div class="talent-chart-container">
+                <div class="talent-chart-header">
+                    <div class="talent-chart-title">天賦分析結果</div>
+                    <div class="talent-chart-subtitle">BASED ON KOLBE A™ INDEX</div>
+                </div>
+                <div style="position: relative; width: 100%; max-width: 400px; margin: 0 auto;">
+                    <canvas id="talentChart" width="400" height="400" style="max-width: 100%; height: auto;"></canvas>
+                </div>
+            </div>
+
+            <div class="talent-score-bars">
+                <div id="talentScores"></div>
+            </div>
+
+            <div class="recommendation-box">
+                <div class="recommendation-title">💫 成功案例參考</div>
+                <div class="recommendation-content" id="recommendedPosition"></div>
+            </div>
+
+            <div class="nav-buttons">
+                <button class="btn btn-next" onclick="nextSection(1)"><span>繼續填寫</span></button>
+            </div>
+        </div>
+
+        <!-- Section 2: 個人資料 -->
+        <div class="section" id="section2">
+            <div class="section-title">👤 個人資料</div>
+            
+            <div class="form-group">
+                <label class="form-label required">姓名</label>
+                <input type="text" class="form-input" id="name" placeholder="請輸入您的姓名" required>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label required">電話</label>
+                <input type="tel" class="form-input" id="phone" placeholder="09XXXXXXXX" maxlength="10" pattern="09[0-9]{8}" required>
+                <span style="font-size: 12px; color: #808080; margin-top: 5px; display: block;">格式:09 開頭共 10 碼</span>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label required">性別</label>
+                <div class="radio-group">
+                    <div class="radio-option" style="flex: 1;">
+                        <input type="radio" id="male" name="gender" value="男性">
+                        <label class="radio-label" for="male"><span>男性</span></label>
+                    </div>
+                    <div class="radio-option" style="flex: 1;">
+                        <input type="radio" id="female" name="gender" value="女性">
+                        <label class="radio-label" for="female"><span>女性</span></label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label required">生日</label>
+                <div style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 8px;">
+                    <select class="form-input" id="birthYear" required>
+                        <option value="">選擇年份</option>
+                    </select>
+                    <select class="form-input" id="birthMonth" required onchange="updateBirthDays()">
+                        <option value="">月</option>
+                        <option value="01">1月</option>
+                        <option value="02">2月</option>
+                        <option value="03">3月</option>
+                        <option value="04">4月</option>
+                        <option value="05">5月</option>
+                        <option value="06">6月</option>
+                        <option value="07">7月</option>
+                        <option value="08">8月</option>
+                        <option value="09">9月</option>
+                        <option value="10">10月</option>
+                        <option value="11">11月</option>
+                        <option value="12">12月</option>
+                    </select>
+                    <select class="form-input" id="birthDay" required>
+                        <option value="">日</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label required">電子信箱</label>
+                <div style="position: relative;">
+                    <input type="email" class="form-input" id="email" placeholder="example@gmail.com" required autocomplete="off">
+                    <div id="emailSuggestions" style="display: none; position: absolute; top: 100%; left: 0; right: 0; background: white; border: 2px solid #7ac19a; border-top: none; border-radius: 0 0 10px 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); z-index: 1000; max-height: 200px; overflow-y: auto;">
+                    </div>
+                </div>
+            </div>
+
+            <div class="nav-buttons">
+                <button class="btn btn-prev" onclick="prevSection(2)"><span>上一步</span></button>
+                <button class="btn btn-next" onclick="nextSection(2)"><span>下一步</span></button>
+            </div>
+        </div>
+<!-- Section 3: 深度問答 -->
+        <div class="section" id="section3">
+            <div class="section-title">💭 深度了解</div>
+            <p style="color: #808080; margin-bottom: 20px; font-size: 14px;">請根據您的真實經驗回答以下問題</p>
+
+            <div class="form-group">
+                <label class="form-label required">1. 曾經有超過三年以上的工作嗎?</label>
+                <div class="radio-group">
+                    <div class="radio-option" style="flex: 1;">
+                        <input type="radio" id="work3years_yes" name="work3years" value="有" onchange="toggleWork3YearsQuestion(true)">
+                        <label class="radio-label" for="work3years_yes"><span>有</span></label>
+                    </div>
+                    <div class="radio-option" style="flex: 1;">
+                        <input type="radio" id="work3years_no" name="work3years" value="無" onchange="toggleWork3YearsQuestion(false)">
+                        <label class="radio-label" for="work3years_no"><span>無</span></label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group" id="work3years_yes_question" style="display: none;">
+                <label class="form-label">什麼原因離開那份工作?</label>
+                <textarea class="form-input" id="leaveReason3Years" rows="3" placeholder="請簡述原因"></textarea>
+            </div>
+
+            <div class="form-group" id="work3years_no_question" style="display: none;">
+                <label class="form-label">最久的工作是多久呢?</label>
+                <input type="text" class="form-input" id="longestWorkDuration" placeholder="例如:1年6個月">
+            </div>
+
+            <div class="form-group">
+                <label class="form-label required">2. 什麼原因離開了上一份工作?</label>
+                <textarea class="form-input" id="lastJobLeaveReason" rows="3" placeholder="請簡述原因" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label required">3. 遇到重要的決定或情緒上的困擾時,你最常與誰分享想法、討論心事或交流感受?</label>
+                <div class="radio-group" style="flex-direction: column; gap: 10px;">
+                    <div class="radio-option">
+                        <input type="radio" id="family_dad" name="familyInteraction" value="主要跟爸爸分享、互動很好">
+                        <label class="radio-label" for="family_dad"><span>主要跟爸爸分享、互動很好</span></label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="family_mom" name="familyInteraction" value="主要跟媽媽分享、互動很好">
+                        <label class="radio-label" for="family_mom"><span>主要跟媽媽分享、互動很好</span></label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="family_sometimes" name="familyInteraction" value="偶爾會跟家人聊,但大多自己想一想">
+                        <label class="radio-label" for="family_sometimes"><span>偶爾會跟家人聊,但大多自己想一想</span></label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="family_rarely" name="familyInteraction" value="平常很少跟家人分享心事,習慣自己處理">
+                        <label class="radio-label" for="family_rarely"><span>平常很少跟家人分享心事,習慣自己處理</span></label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label required">4. 成長過程中,父母哪一句話讓你印象最深刻?為什麼?</label>
+                <p style="color: #808080; font-size: 13px; margin-bottom: 12px;">(請分享一句你至今仍會記得的話,並說明它帶給你的影響。)</p>
+                <textarea class="form-input" id="parentQuote" rows="3" placeholder="例如:「失敗沒什麼,只是過程的一部分。」讓我不怕挑戰。" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label required">5. 請給自己對於這件事情的重視程度打一個分數(0-10分)</label>
+                <div class="value-slider-container">
+                    
+                    <div class="value-item">
+                        <div class="value-header">
+                            <label class="value-label">事業</label>
+                            <div class="value-display">
+                                <span id="careerValue" class="value-number">0</span>
+                                <span class="value-max">/10</span>
+                            </div>
+                        </div>
+                        <input type="range" class="slider" id="career" min="0" max="10" value="0" oninput="updateValue('career', this.value)">
+                        <div class="slider-scale">
+                            <span class="slider-scale-item">0</span>
+                            <span class="slider-scale-item">5</span>
+                            <span class="slider-scale-item">10</span>
+                        </div>
+                    </div>
+
+                    <div class="value-item">
+                        <div class="value-header">
+                            <label class="value-label">金錢</label>
+                            <div class="value-display">
+                                <span id="moneyValue" class="value-number">0</span>
+                                <span class="value-max">/10</span>
+                            </div>
+                        </div>
+                        <input type="range" class="slider" id="money" min="0" max="10" value="0" oninput="updateValue('money', this.value)">
+                        <div class="slider-scale">
+                            <span class="slider-scale-item">0</span>
+                            <span class="slider-scale-item">5</span>
+                            <span class="slider-scale-item">10</span>
+                        </div>
+                    </div>
+
+                    <div class="value-item">
+                        <div class="value-header">
+                            <label class="value-label">家庭</label>
+                            <div class="value-display">
+                                <span id="familyValue" class="value-number">0</span>
+                                <span class="value-max">/10</span>
+                            </div>
+                        </div>
+                        <input type="range" class="slider" id="family" min="0" max="10" value="0" oninput="updateValue('family', this.value)">
+                        <div class="slider-scale">
+                            <span class="slider-scale-item">0</span>
+                            <span class="slider-scale-item">5</span>
+                            <span class="slider-scale-item">10</span>
+                        </div>
+                    </div>
+
+                    <div class="value-item">
+                        <div class="value-header">
+                            <label class="value-label">感情</label>
+                            <div class="value-display">
+                                <span id="relationshipValue" class="value-number">0</span>
+                                <span class="value-max">/10</span>
+                            </div>
+                        </div>
+                        <input type="range" class="slider" id="relationship" min="0" max="10" value="0" oninput="updateValue('relationship', this.value)">
+                        <div class="slider-scale">
+                            <span class="slider-scale-item">0</span>
+                            <span class="slider-scale-item">5</span>
+                            <span class="slider-scale-item">10</span>
+                        </div>
+                    </div>
+
+                    <div class="value-item">
+                        <div class="value-header">
+                            <label class="value-label">健康</label>
+                            <div class="value-display">
+                                <span id="healthValue" class="value-number">0</span>
+                                <span class="value-max">/10</span>
+                            </div>
+                        </div>
+                        <input type="range" class="slider" id="health" min="0" max="10" value="0" oninput="updateValue('health', this.value)">
+                        <div class="slider-scale">
+                            <span class="slider-scale-item">0</span>
+                            <span class="slider-scale-item">5</span>
+                            <span class="slider-scale-item">10</span>
+                        </div>
+                    </div>
+
+                    <div class="value-item">
+                        <div class="value-header">
+                            <label class="value-label">獨處</label>
+                            <div class="value-display">
+                                <span id="aloneValue" class="value-number">0</span>
+                                <span class="value-max">/10</span>
+                            </div>
+                        </div>
+                        <input type="range" class="slider" id="alone" min="0" max="10" value="0" oninput="updateValue('alone', this.value)">
+                        <div class="slider-scale">
+                            <span class="slider-scale-item">0</span>
+                            <span class="slider-scale-item">5</span>
+                            <span class="slider-scale-item">10</span>
+                        </div>
+                    </div>
+
+                    <div class="value-item">
+                        <div class="value-header">
+                            <label class="value-label">朋友</label>
+                            <div class="value-display">
+                                <span id="friendsValue" class="value-number">0</span>
+                                <span class="value-max">/10</span>
+                            </div>
+                        </div>
+                        <input type="range" class="slider" id="friends" min="0" max="10" value="0" oninput="updateValue('friends', this.value)">
+                        <div class="slider-scale">
+                            <span class="slider-scale-item">0</span>
+                            <span class="slider-scale-item">5</span>
+                            <span class="slider-scale-item">10</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="margin-top: 20px;">
+                    <div style="text-align: center; margin-bottom: 15px;">
+                        <strong style="color: #5f846f; font-size: 16px;">人生價值觀圖表</strong>
+                    </div>
+                    <div style="position: relative; width: 100%; max-width: 400px; margin: 0 auto;">
+                        <canvas id="lifeValueChart" width="400" height="400" style="max-width: 100%; height: auto;"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label required">6. 人生中最挫敗的一次經驗是什麼?最後你是如何渡過難關?※精簡回答即可</label>
+                <textarea class="form-input" id="failureExperience" rows="4" placeholder="例如:在某次工作時被老闆與主管嫌得一文不值,但我最後做了實際行動去學習付出,在半年內讓她們刮目相看" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label required">7. 過去一年,你主動做過哪些學習或提升?你是怎麼安排時間的?</label>
+                <textarea class="form-input" id="learningInitiative" rows="4" placeholder="例如:因為想升職,報名一個較艱難的課程(語言、證照、管理),週末上課持續三個月" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label required">8. 如果公司希望你學新的技能,你會怎麼安排時間或資源?</label>
+                <textarea class="form-input" id="newSkillArrangement" rows="4" placeholder="例如:願意挑戰不熟悉的領域,因為跨技能能讓我更有價值" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label required">9. 你希望自己未來成為什麼樣的人?</label>
+                <textarea class="form-input" id="futureGoal" rows="3" placeholder="請描述您的理想目標" required></textarea>
+            </div>
+
+            <div class="nav-buttons">
+                <button class="btn btn-prev" onclick="prevSection(3)"><span>上一步</span></button>
+                <button class="btn btn-next" onclick="nextSection(3)"><span>下一步</span></button>
+            </div>
+        </div>
+
+        <!-- Section 4: 文件上傳 -->
+        <div class="section" id="section4">
+            <div class="section-title">📄 文件上傳</div>
+            <p style="color: #808080; margin-bottom: 20px; font-size: 14px;">請分別上傳您的照片與相關文件</p>
+
+            <div class="form-group">
+                <label class="form-label">📸 照片上傳 (個人照、證件照等)</label>
+                <p style="color: #808080; font-size: 13px; margin-bottom: 12px;">請上傳個人照片、證件照或相關圖片</p>
+                <div class="file-upload" onclick="document.getElementById('imageFiles').click()">
+                    <div class="file-upload-icon">🖼️</div>
+                    <div class="file-upload-text">點擊上傳照片 (僅支援圖片格式)</div>
+                    <div class="file-size-warning">⚠️ 限制:僅接受圖片 (JPG/PNG) | 單檔小於 3MB</div>
+                    <input type="file" id="imageFiles" accept=".jpg,.jpeg,.png,image/jpeg,image/png" multiple onchange="handleFileSelect(this, 'imageFilesPreview')">
+                </div>
+                <div class="file-preview-container" id="imageFilesPreview"></div>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">📄 文件上傳 (履歷、證照等)</label>
+                <p style="color: #808080; font-size: 13px; margin-bottom: 12px;">請上傳履歷表、證照或其他相關 PDF 文件</p>
+                <div class="file-upload" onclick="document.getElementById('pdfFiles').click()">
+                    <div class="file-upload-icon">📋</div>
+                    <div class="file-upload-text">點擊上傳文件 (僅支援 PDF 格式)</div>
+                    <div class="file-size-warning">⚠️ 限制:僅接受 PDF | 單檔小於 3MB</div>
+                    <input type="file" id="pdfFiles" accept=".pdf,application/pdf" multiple onchange="handleFileSelect(this, 'pdfFilesPreview')">
+                </div>
+                <div class="file-preview-container" id="pdfFilesPreview"></div>
+            </div>
+
+            <div id="totalSizeDisplay" class="total-size-display" style="display: none;">
+                總檔案大小: <span id="totalSizeValue">0 MB</span> / 5 MB
+            </div>
+
+            <div class="nav-buttons">
+                <button class="btn btn-prev" onclick="prevSection(4)"><span>上一步</span></button>
+                <button class="btn btn-submit" onclick="submitForm()"><span>提交應聘資料</span></button>
+            </div>
+        </div>
+
+        <!-- 載入中 -->
+        <div class="loading" id="loading">
+            <div class="spinner"></div>
+            <p style="color: #5f846f; font-size: 16px;">正在提交您的資料...</p>
+        </div>
+
+        <!-- 成功訊息 -->
+        <div class="success-message" id="successMessage">
+            <div class="success-icon">✓</div>
+            <h2 style="color: #7ac19a; margin-bottom: 10px;">提交成功!</h2>
+            <p style="color: #808080;">感謝您的應聘,我們會盡快與您聯繫。</p>
+        </div>
+    </div>
+
+    <script>
+const questions = [
+            "把創意想法化為現實我會感到滿足與喜悅",
+            "不喜歡重複解釋事情好幾次",
+            "想出新計畫對我是簡單容易的",
+            "不擅於耐心等待答案",
+            "最適合描述自己的詞是「有創意」",
+            "認識結交新朋友我會感到滿足與喜悅",
+            "不喜歡研究試算表裡的細部資訊",
+            "跟人相處互動對我是簡單容易的",
+            "不擅於閱讀說明很詳盡的使用手冊",
+            "最適合描述自己的詞是「開朗外向」",
+            "服務他人我會感到滿足與喜悅",
+            "不喜歡混亂與不確定性",
+            "找到划算的交易對我是簡單容易的",
+            "不擅於快速想出好點子",
+            "最適合描述自己的詞是「可靠」",
+            "當我有安靜獨處的時光我會感到滿足與喜悅",
+            "不喜歡出去跟人社交",
+            "把文字整理得有條不紊對我是簡單容易的",
+            "不擅於讓陌生人覺得你很好相處",
+            "最適合描述自己的詞是「注重細節」"
+        ];
+
+        const questionTypeMap = {
+            1: 'dynamo', 2: 'blaze', 3: 'dynamo', 4: 'dynamo', 5: 'dynamo',
+            6: 'blaze', 7: 'blaze', 8: 'blaze', 9: 'blaze', 10: 'blaze',
+            11: 'tempo', 12: 'steel', 13: 'tempo', 14: 'steel', 15: 'tempo',
+            16: 'steel', 17: 'steel', 18: 'steel', 19: 'steel', 20: 'steel'
+        };
+
+        const personalityAnswers = {};
+        let currentSection = 1;
+        const totalSections = 6;
+        let talentScores = {};
+        let lifeValueScores = {};
+        let learningScores = { learningBehavior: 0, crossSkillInvestment: 0 };
+        let positionData = { 
+            position: '', 
+            specialty_1: '', 
+            specialty_2: '', 
+            medicalBackground: '' 
+        };
+
+        // 🔥 修正:Cloudflare Worker URL (請替換為您的實際 URL)
+        const API_ENDPOINT = 'https://fitresume.doublemeat33.workers.dev';
+        // 如果還沒設定 Worker,暫時可以用原始 Make.com URL:
+        // const API_ENDPOINT = 'https://hook.us2.make.com/7o0t3iisa61knf5wta8yevr8vhspkc9j';
+
+        function togglePositionDetails(position) {
+            const trainerSpecialties = document.getElementById('trainer_specialties');
+            const aiMedicalBackground = document.getElementById('ai_medical_background');
+            
+            if (trainerSpecialties) trainerSpecialties.style.display = 'none';
+            if (aiMedicalBackground) aiMedicalBackground.style.display = 'none';
+            
+            const checkboxes = document.querySelectorAll('input[name="specialty"]');
+            checkboxes.forEach(cb => cb.checked = false);
+            
+            if (position === 'trainer' && trainerSpecialties) {
+                trainerSpecialties.style.display = 'block';
+            } else if (position === 'ai' && aiMedicalBackground) {
+                aiMedicalBackground.style.display = 'block';
+            }
+        }
+
+        function limitSpecialtySelection(checkbox) {
+            const checkboxes = document.querySelectorAll('input[name="specialty"]:checked');
+            if (checkboxes.length > 2) {
+                checkbox.checked = false;
+                alert('最多只能選擇兩項專長');
+            }
+        }
+
+        function toggleOtherSpecialty() {
+            const otherCheck = document.getElementById('specialty_other_check');
+            const otherText = document.getElementById('specialty_other_text');
+            if (otherCheck && otherText) {
+                if (otherCheck.checked) {
+                    otherText.style.display = 'block';
+                    otherText.required = true;
+                } else {
+                    otherText.style.display = 'none';
+                    otherText.required = false;
+                    otherText.value = '';
+                }
+            }
+        }
+
+        function validatePositionAndNext() {
+            const position = document.querySelector('input[name="position"]:checked');
+            
+            if (!position) {
+                alert('請選擇您想應徵的職位');
+                return;
+            }
+
+            positionData.position = position.value;
+            positionData.specialty_1 = '';
+            positionData.specialty_2 = '';
+
+            if (position.value === '重訓教練') {
+                const selectedSpecialties = document.querySelectorAll('input[name="specialty"]:checked');
+                
+                if (selectedSpecialties.length === 0) {
+                    alert('請至少選擇一項專長');
+                    return;
+                }
+
+                selectedSpecialties.forEach((spec, index) => {
+                    if (spec.value === '其他') {
+                        const otherText = document.getElementById('specialty_other_text');
+                        const otherValue = otherText ? otherText.value.trim() : '';
+                        if (!otherValue) {
+                            alert('請說明其他專長');
+                            return;
+                        }
+                        if (index === 0) {
+                            positionData.specialty_1 = '其他:' + otherValue;
+                        } else if (index === 1) {
+                            positionData.specialty_2 = '其他:' + otherValue;
+                        }
+                    } else {
+                        if (index === 0) {
+                            positionData.specialty_1 = spec.value;
+                        } else if (index === 1) {
+                            positionData.specialty_2 = spec.value;
+                        }
+                    }
+                });
+            }
+
+            if (position.value === 'AI分析師') {
+                const medicalBackground = document.querySelector('input[name="medicalBackground"]:checked');
+                if (!medicalBackground) {
+                    alert('請選擇是否有運動醫學或物理治療師相關背景');
+                    return;
+                }
+                positionData.medicalBackground = medicalBackground.value;
+            }
+
+            document.getElementById('section1').classList.remove('active');
+            currentSection = 1.5;
+            document.getElementById('section1b').classList.add('active');
+            updateProgress();
+            window.scrollTo(0, 0);
+        }
+        
+        function updateBirthDays() {
+            const birthYear = document.getElementById('birthYear');
+            const birthMonth = document.getElementById('birthMonth');
+            const birthDay = document.getElementById('birthDay');
+            
+            const year = parseInt(birthYear.value);
+            const month = parseInt(birthMonth.value);
+            
+            birthDay.innerHTML = '<option value="">日</option>';
+            
+            if (!month) return;
+            
+            let daysInMonth = 31;
+            
+            if ([4, 6, 9, 11].includes(month)) {
+                daysInMonth = 30;
+            } else if (month === 2) {
+                if (year && year % 4 === 0 && (year % 100 !== 0 || year % 400 === 0)) {
+                    daysInMonth = 29;
+                } else {
+                    daysInMonth = 28;
+                }
+            }
+            
+            for (let day = 1; day <= daysInMonth; day++) {
+                const option = document.createElement('option');
+                const dayValue = day.toString().padStart(2, '0');
+                option.value = dayValue;
+                option.textContent = day + '日';
+                birthDay.appendChild(option);
+            }
+        }
+
+        window.onload = function() {
+            const birthYearSelect = document.getElementById('birthYear');
+            const endYear = 2010;
+            const startYear = 1940;
+            
+            for (let year = endYear; year >= startYear; year--) {
+                const option = document.createElement('option');
+                option.value = year;
+                option.textContent = year + '年';
+                birthYearSelect.appendChild(option);
+            }
+
+            const container = document.getElementById('personalityQuestions');
+            questions.forEach((question, index) => {
+                const questionNum = index + 1;
+                const card = document.createElement('div');
+                card.className = 'question-card';
+                card.innerHTML = `
+                    <div class="question-text">
+                        <span class="question-number">${questionNum}</span>
+                        ${question}
+                    </div>
+                    <div class="toggle-buttons">
+                        <button class="toggle-btn yes" onclick="selectAnswer(${questionNum}, true, this)"><span>是</span></button>
+                        <button class="toggle-btn no" onclick="selectAnswer(${questionNum}, false, this)"><span>否</span></button>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+
+            document.getElementById('phone').addEventListener('input', function(e) {
+                this.value = this.value.replace(/[^0-9]/g, '');
+                if (this.value.length > 0 && this.value[0] !== '0') {
+                    this.value = '0' + this.value;
+                }
+                if (this.value.length > 1 && this.value[1] !== '9') {
+                    this.value = this.value[0] + '9' + this.value.slice(2);
+                }
+            });
+
+            const emailInput = document.getElementById('email');
+            const emailSuggestions = document.getElementById('emailSuggestions');
+            const domains = ['gmail.com', 'yahoo.com.tw', 'hotmail.com', 'outlook.com', 'icloud.com'];
+
+            emailInput.addEventListener('input', function() {
+                const value = this.value;
+                const atIndex = value.indexOf('@');
+
+                if (atIndex > 0 && atIndex === value.length - 1) {
+                    const username = value.substring(0, atIndex);
+                    showSuggestions(username, domains);
+                } else if (atIndex > 0) {
+                    const username = value.substring(0, atIndex);
+                    const domainPart = value.substring(atIndex + 1).toLowerCase();
+                    const filteredDomains = domains.filter(d => d.startsWith(domainPart));
+                    if (filteredDomains.length > 0 && domainPart !== '') {
+                        showSuggestions(username, filteredDomains);
+                    } else if (domainPart === '') {
+                        showSuggestions(username, domains);
+                    } else {
+                        hideSuggestions();
+                    }
+                } else {
+                    hideSuggestions();
+                }
+            });
+
+            emailInput.addEventListener('blur', function() {
+                setTimeout(() => hideSuggestions(), 300);
+            });
+
+            emailInput.addEventListener('focus', function() {
+                const value = this.value;
+                const atIndex = value.indexOf('@');
+                if (atIndex > 0) {
+                    const username = value.substring(0, atIndex);
+                    const domainPart = value.substring(atIndex + 1).toLowerCase();
+                    if (domainPart === '') {
+                        showSuggestions(username, domains);
+                    }
+                }
+            });
+
+            function showSuggestions(username, domainList) {
+                emailSuggestions.innerHTML = '';
+                domainList.forEach(domain => {
+                    const item = document.createElement('div');
+                    item.className = 'email-suggestion-item';
+                    item.innerHTML = `<strong>${username}</strong>@${domain}`;
+                    
+                    item.addEventListener('mousedown', function(e) {
+                        e.preventDefault();
+                        emailInput.value = `${username}@${domain}`;
+                        hideSuggestions();
+                        emailInput.focus();
+                    });
+                    
+                    emailSuggestions.appendChild(item);
+                });
+                emailSuggestions.style.display = 'block';
+            }
+
+            function hideSuggestions() {
+                emailSuggestions.style.display = 'none';
+            }
+
+            updateProgress();
+        };
+
+        function toggleWork3YearsQuestion(hasWork) {
+            const yesQuestion = document.getElementById('work3years_yes_question');
+            const noQuestion = document.getElementById('work3years_no_question');
+            
+            if (hasWork) {
+                yesQuestion.style.display = 'block';
+                noQuestion.style.display = 'none';
+                document.getElementById('longestWorkDuration').required = false;
+            } else {
+                yesQuestion.style.display = 'none';
+                noQuestion.style.display = 'block';
+                document.getElementById('longestWorkDuration').required = true;
+            }
+        }
+
+        function updateValue(id, value) {
+            document.getElementById(id + 'Value').textContent = value;
+            lifeValueScores[id] = parseInt(value);
+            drawLifeValueChart();
+        }
+
+        function selectAnswer(questionNum, value, element) {
+            personalityAnswers[questionNum] = value;
+            
+            const buttons = element.parentElement.querySelectorAll('.toggle-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            element.classList.add('active');
+        }
+
+        function analyzePersonality() {
+            const answeredCount = Object.keys(personalityAnswers).length;
+            
+            if (answeredCount < questions.length) {
+                alert('請完成所有人格分析問題(已完成 ' + answeredCount + '/' + questions.length + ')');
+                return;
+            }
+
+            document.getElementById('section1b').classList.remove('active');
+            document.getElementById('sectionAnalyzing').classList.add('active');
+            window.scrollTo(0, 0);
+
+            setTimeout(() => {
+                calculateTalentScores();
+                showTalentResult();
+            }, 2000);
+        }
+
+        function calculateTalentScores() {
+            let dynamoRaw = 0, blazeRaw = 0, tempoRaw = 0, steelRaw = 0;
+
+            for (let i = 1; i <= 20; i++) {
+                if (personalityAnswers[i]) {
+                    const type = questionTypeMap[i];
+                    if (type === 'dynamo') dynamoRaw += 1;
+                    else if (type === 'blaze') blazeRaw += 1;
+                    else if (type === 'tempo') tempoRaw += 1;
+                    else if (type === 'steel') steelRaw += 1;
+                }
+            }
+
+            const maxRawScores = {
+                dynamo: 4,
+                blaze: 6,
+                tempo: 3,
+                steel: 7
+            };
+
+            const percentages = {
+                dynamo: dynamoRaw / maxRawScores.dynamo,
+                blaze: blazeRaw / maxRawScores.blaze,
+                tempo: tempoRaw / maxRawScores.tempo,
+                steel: steelRaw / maxRawScores.steel
+            };
+
+            talentScores = {
+                dynamo: Math.round(percentages.dynamo * 5 * 10) / 10,
+                blaze: Math.round(percentages.blaze * 5 * 10) / 10,
+                tempo: Math.round(percentages.tempo * 5 * 10) / 10,
+                steel: Math.round(percentages.steel * 5 * 10) / 10,
+                raw: {
+                    dynamo: dynamoRaw,
+                    blaze: blazeRaw,
+                    tempo: tempoRaw,
+                    steel: steelRaw
+                },
+                percentages: percentages
+            };
+        }
+
+        // 🔥 學習行為評分 (1-5分)
+        function calculateLearningBehaviorScore(text) {
+            if (!text || text.trim().length < 10) return 1;
+            
+            const textLower = text.toLowerCase();
+            const highScoreKeywords = ['證照', '執照', '課程', '培訓', '學習計畫', '目標', '成果', '作品', '專案', '假日', '週末', '下班', '自費', '投資', '成長'];
+            const mediumHighKeywords = ['學習', '進修', '研究', '實作', '練習'];
+            const lowKeywords = ['被要求', '公司安排', '主管叫', '沒辦法', '規定'];
+            const veryLowKeywords = ['沒有', '沒時間', '不需要', '不想', '懶得'];
+            
+            let score = 3;
+            
+            for (let keyword of veryLowKeywords) {
+                if (textLower.includes(keyword)) return 1;
+            }
+            
+            for (let keyword of lowKeywords) {
+                if (textLower.includes(keyword)) return Math.max(score - 1, 2);
+            }
+            
+            let highScoreCount = 0;
+            for (let keyword of highScoreKeywords) {
+                if (textLower.includes(keyword)) highScoreCount++;
+            }
+            
+            let mediumHighCount = 0;
+            for (let keyword of mediumHighKeywords) {
+                if (textLower.includes(keyword)) mediumHighCount++;
+            }
+            
+            if (highScoreCount >= 3) {
+                score = 5;
+            } else if (highScoreCount >= 2 || (highScoreCount >= 1 && mediumHighCount >= 2)) {
+                score = 4;
+            } else if (highScoreCount >= 1 || mediumHighCount >= 2) {
+                score = 3;
+            }
+            
+            if (text.length > 100 && score >= 3) {
+                score = Math.min(score + 0.5, 5);
+            }
+            
+            return Math.round(score);
+        }
+
+        // 🔥 跨技能投入評分 (1-5分)
+        function calculateCrossSkillScore(text) {
+            if (!text || text.trim().length < 10) return 1;
+            
+            const textLower = text.toLowerCase();
+            const highScoreKeywords = ['自費', '利用', '休假', '下班', '週末', '規劃', '拆解', '目標', '責任', '主動'];
+            const mediumHighKeywords = ['願意', '學習', '找資源', '課程', '影片', '同事', '請教', '跨領域', '挑戰'];
+            const lowKeywords = ['上班時間', '公司安排', '公司出錢', '不想', '困難', '麻煩'];
+            const veryLowKeywords = ['不是我的工作', '不會學', '沒興趣', '拒絕', '排斥', '不願意'];
+            
+            let score = 3;
+            
+            for (let keyword of veryLowKeywords) {
+                if (textLower.includes(keyword)) return 1;
+            }
+            
+            for (let keyword of lowKeywords) {
+                if (textLower.includes(keyword)) return Math.max(score - 1, 2);
+            }
+            
+            let highScoreCount = 0;
+            for (let keyword of highScoreKeywords) {
+                if (textLower.includes(keyword)) highScoreCount++;
+            }
+            
+            let mediumHighCount = 0;
+            for (let keyword of mediumHighKeywords) {
+                if (textLower.includes(keyword)) mediumHighCount++;
+            }
+            
+            if (highScoreCount >= 3) {
+                score = 5;
+            } else if (highScoreCount >= 2 || (highScoreCount >= 1 && mediumHighCount >= 2)) {
+                score = 4;
+            } else if (highScoreCount >= 1 || mediumHighCount >= 2) {
+                score = 3;
+            }
+            
+            if (text.length > 80 && score >= 3) {
+                score = Math.min(score + 0.5, 5);
+            }
+            
+            return Math.round(score);
+        }
+function showTalentResult() {
+            document.getElementById('sectionAnalyzing').classList.remove('active');
+            document.getElementById('sectionResult').classList.add('active');
+            window.scrollTo(0, 0);
+
+            drawRadarChart();
+            drawLifeValueChart();
+            displayScoreBars();
+        }
+
+        function drawRadarChart() {
+            const canvas = document.getElementById('talentChart');
+            if (!canvas) return;
+            
+            const ctx = canvas.getContext('2d');
+            const centerX = canvas.width / 2;
+            const centerY = canvas.height / 2;
+            const radius = Math.min(centerX, centerY) - 60;
+            
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            const data = [
+                { label: '發電機\nDynamo', value: talentScores.dynamo },
+                { label: '火焰\nBlaze', value: talentScores.blaze },
+                { label: '節奏型\nTempo', value: talentScores.tempo },
+                { label: '鋼鐵\nSteel', value: talentScores.steel }
+            ];
+            
+            const maxValue = 5;
+            const numSides = data.length;
+            const angleStep = (Math.PI * 2) / numSides;
+            
+            ctx.strokeStyle = '#e2ede6';
+            ctx.lineWidth = 2;
+            
+            for (let level = 1; level <= 5; level++) {
+                const levelRadius = (radius / 5) * level;
+                ctx.beginPath();
+                
+                for (let i = 0; i <= numSides; i++) {
+                    const angle = angleStep * i - Math.PI / 2;
+                    const x = centerX + Math.cos(angle) * levelRadius;
+                    const y = centerY + Math.sin(angle) * levelRadius;
+                    
+                    if (i === 0) ctx.moveTo(x, y);
+                    else ctx.lineTo(x, y);
+                }
+                
+                ctx.closePath();
+                ctx.stroke();
+            }
+            
+            for (let i = 0; i < numSides; i++) {
+                const angle = angleStep * i - Math.PI / 2;
+                const x = centerX + Math.cos(angle) * radius;
+                const y = centerY + Math.sin(angle) * radius;
+                
+                ctx.beginPath();
+                ctx.moveTo(centerX, centerY);
+                ctx.lineTo(x, y);
+                ctx.stroke();
+            }
+            
+            ctx.fillStyle = 'rgba(122, 193, 154, 0.2)';
+            ctx.strokeStyle = '#7ac19a';
+            ctx.lineWidth = 3;
+            ctx.beginPath();
+            
+            for (let i = 0; i < numSides; i++) {
+                const angle = angleStep * i - Math.PI / 2;
+                const value = data[i].value;
+                const distance = (radius / maxValue) * value;
+                const x = centerX + Math.cos(angle) * distance;
+                const y = centerY + Math.sin(angle) * distance;
+                
+                if (i === 0) ctx.moveTo(x, y);
+                else ctx.lineTo(x, y);
+            }
+            
+            ctx.closePath();
+            ctx.fill();
+            ctx.stroke();
+            
+            ctx.fillStyle = '#7ac19a';
+            
+            for (let i = 0; i < numSides; i++) {
+                const angle = angleStep * i - Math.PI / 2;
+                const value = data[i].value;
+                const distance = (radius / maxValue) * value;
+                const x = centerX + Math.cos(angle) * distance;
+                const y = centerY + Math.sin(angle) * distance;
+                
+                ctx.beginPath();
+                ctx.arc(x, y, 6, 0, Math.PI * 2);
+                ctx.fill();
+                
+                ctx.strokeStyle = '#ffffff';
+                ctx.lineWidth = 3;
+                ctx.stroke();
+            }
+            
+            ctx.fillStyle = '#5f846f';
+            ctx.font = 'bold 12px "Noto Sans TC", sans-serif';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            
+            for (let i = 0; i < numSides; i++) {
+                const angle = angleStep * i - Math.PI / 2;
+                const labelDistance = radius + 40;
+                const x = centerX + Math.cos(angle) * labelDistance;
+                const y = centerY + Math.sin(angle) * labelDistance;
+                
+                const lines = data[i].label.split('\n');
+                lines.forEach((line, index) => {
+                    ctx.fillText(line, x, y + (index - 0.5) * 14);
+                });
+            }
+            
+            ctx.fillStyle = '#66888e';
+            ctx.font = '11px "Noto Sans TC", sans-serif';
+            ctx.textAlign = 'left';
+            ctx.textBaseline = 'middle';
+            
+            for (let level = 1; level <= 5; level++) {
+                ctx.fillText(level.toString(), centerX + 5, centerY - (radius / 5) * level);
+            }
+        }
+
+        function drawLifeValueChart() {
+            const canvas = document.getElementById('lifeValueChart');
+            if (!canvas || !canvas.getContext) return;
+            
+            const ctx = canvas.getContext('2d');
+            const centerX = canvas.width / 2;
+            const centerY = canvas.height / 2;
+            const radius = Math.min(centerX, centerY) - 60;
+            
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            const data = [
+                { label: '事業', value: lifeValueScores.career || 0 },
+                { label: '金錢', value: lifeValueScores.money || 0 },
+                { label: '家庭', value: lifeValueScores.family || 0 },
+                { label: '感情', value: lifeValueScores.relationship || 0 },
+                { label: '健康', value: lifeValueScores.health || 0 },
+                { label: '獨處', value: lifeValueScores.alone || 0 },
+                { label: '朋友', value: lifeValueScores.friends || 0 }
+            ];
+            
+            const maxValue = 10;
+            const numSides = data.length;
+            const angleStep = (Math.PI * 2) / numSides;
+            
+            ctx.strokeStyle = '#e2ede6';
+            ctx.lineWidth = 2;
+            
+            for (let level = 2; level <= 10; level += 2) {
+                const levelRadius = (radius / 10) * level;
+                ctx.beginPath();
+                
+                for (let i = 0; i <= numSides; i++) {
+                    const angle = angleStep * i - Math.PI / 2;
+                    const x = centerX + Math.cos(angle) * levelRadius;
+                    const y = centerY + Math.sin(angle) * levelRadius;
+                    
+                    if (i === 0) {
+                        ctx.moveTo(x, y);
+                    } else {
+                        ctx.lineTo(x, y);
+                    }
+                }
+                
+                ctx.closePath();
+                ctx.stroke();
+            }
+            
+            for (let i = 0; i < numSides; i++) {
+                const angle = angleStep * i - Math.PI / 2;
+                const x = centerX + Math.cos(angle) * radius;
+                const y = centerY + Math.sin(angle) * radius;
+                
+                ctx.beginPath();
+                ctx.moveTo(centerX, centerY);
+                ctx.lineTo(x, y);
+                ctx.stroke();
+            }
+            
+            ctx.fillStyle = 'rgba(122, 193, 154, 0.2)';
+            ctx.strokeStyle = '#7ac19a';
+            ctx.lineWidth = 3;
+            ctx.beginPath();
+            
+            for (let i = 0; i < numSides; i++) {
+                const angle = angleStep * i - Math.PI / 2;
+                const value = data[i].value;
+                const distance = (radius / maxValue) * value;
+                const x = centerX + Math.cos(angle) * distance;
+                const y = centerY + Math.sin(angle) * distance;
+                
+                if (i === 0) {
+                    ctx.moveTo(x, y);
+                } else {
+                    ctx.lineTo(x, y);
+                }
+            }
+            
+            ctx.closePath();
+            ctx.fill();
+            ctx.stroke();
+            
+            ctx.fillStyle = '#7ac19a';
+            
+            for (let i = 0; i < numSides; i++) {
+                const angle = angleStep * i - Math.PI / 2;
+                const value = data[i].value;
+                const distance = (radius / maxValue) * value;
+                const x = centerX + Math.cos(angle) * distance;
+                const y = centerY + Math.sin(angle) * distance;
+                
+                ctx.beginPath();
+                ctx.arc(x, y, 6, 0, Math.PI * 2);
+                ctx.fill();
+                
+                ctx.strokeStyle = '#ffffff';
+                ctx.lineWidth = 3;
+                ctx.stroke();
+            }
+            
+            ctx.fillStyle = '#5f846f';
+            ctx.font = 'bold 13px "Noto Sans TC", sans-serif';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            
+            for (let i = 0; i < numSides; i++) {
+                const angle = angleStep * i - Math.PI / 2;
+                const labelDistance = radius + 35;
+                const x = centerX + Math.cos(angle) * labelDistance;
+                const y = centerY + Math.sin(angle) * labelDistance;
+                
+                ctx.fillText(data[i].label, x, y);
+            }
+        }
+
+        function displayScoreBars() {
+            const talentDescriptions = {
+                dynamo: '擅長「創意」,善於啟動與推動事情的進展,擁有十足的感染力',
+                blaze: '擅長「人際」,把人放在首位,喜愛維護人與人之間的關係',
+                tempo: '擅長「腳踏實地」,善用「時機」,能在最好的時機點出手',
+                steel: '擅長「細節」,個性冷靜、沉著穩重,重視邏輯以及數字分析'
+            };
+
+            const maxScores = {
+                dynamo: 5,
+                blaze: 5,
+                tempo: 5,
+                steel: 5
+            };
+
+            const scoresHtml = `
+                <div class="talent-score-item">
+                    <div class="talent-score-header">
+                        <span class="talent-label">發電機 (Dynamo)</span>
+                        <span class="talent-value">${talentScores.dynamo.toFixed(1)}<span style="font-size: 14px; color: #808080;">/${maxScores.dynamo}</span></span>
+                    </div>
+                    <div class="talent-bar">
+                        <div class="talent-bar-fill" style="width: ${(talentScores.dynamo / maxScores.dynamo) * 100}%">
+                            ${talentScores.dynamo >= 1 ? '<span class="talent-score">' + '★'.repeat(Math.round(talentScores.dynamo)) + '</span>' : ''}
+                        </div>
+                    </div>
+                    <div class="talent-description">${talentDescriptions.dynamo}</div>
+                </div>
+                <div class="talent-score-item">
+                    <div class="talent-score-header">
+                        <span class="talent-label">火焰 (Blaze)</span>
+                        <span class="talent-value">${talentScores.blaze.toFixed(1)}<span style="font-size: 14px; color: #808080;">/${maxScores.blaze}</span></span>
+                    </div>
+                    <div class="talent-bar">
+                        <div class="talent-bar-fill" style="width: ${(talentScores.blaze / maxScores.blaze) * 100}%">
+                            ${talentScores.blaze >= 1 ? '<span class="talent-score">' + '★'.repeat(Math.round(talentScores.blaze)) + '</span>' : ''}
+                        </div>
+                    </div>
+                    <div class="talent-description">${talentDescriptions.blaze}</div>
+                </div>
+                <div class="talent-score-item">
+                    <div class="talent-score-header">
+                        <span class="talent-label">節奏型 (Tempo)</span>
+                        <span class="talent-value">${talentScores.tempo.toFixed(1)}<span style="font-size: 14px; color: #808080;">/${maxScores.tempo}</span></span>
+                    </div>
+                    <div class="talent-bar">
+                        <div class="talent-bar-fill" style="width: ${(talentScores.tempo / maxScores.tempo) * 100}%">
+                            ${talentScores.tempo >= 1 ? '<span class="talent-score">' + '★'.repeat(Math.round(talentScores.tempo)) + '</span>' : ''}
+                        </div>
+                    </div>
+                    <div class="talent-description">${talentDescriptions.tempo}</div>
+                </div>
+                <div class="talent-score-item">
+                    <div class="talent-score-header">
+                        <span class="talent-label">鋼鐵 (Steel)</span>
+                        <span class="talent-value">${talentScores.steel.toFixed(1)}<span style="font-size: 14px; color: #808080;">/${maxScores.steel}</span></span>
+                    </div>
+                    <div class="talent-bar">
+                        <div class="talent-bar-fill" style="width: ${(talentScores.steel / maxScores.steel) * 100}%">
+                            ${talentScores.steel >= 1 ? '<span class="talent-score">' + '★'.repeat(Math.round(talentScores.steel)) + '</span>' : ''}
+                        </div>
+                    </div>
+                    <div class="talent-description">${talentDescriptions.steel}</div>
+                </div>
+            `;
+            document.getElementById('talentScores').innerHTML = scoresHtml;
+
+            const scores = [
+                { type: 'dynamo', score: talentScores.dynamo, name: '發電機', max: maxScores.dynamo },
+                { type: 'blaze', score: talentScores.blaze, name: '火焰', max: maxScores.blaze },
+                { type: 'tempo', score: talentScores.tempo, name: '節奏型', max: maxScores.tempo },
+                { type: 'steel', score: talentScores.steel, name: '鋼鐵', max: maxScores.steel }
+            ];
+            
+            scores.sort((a, b) => (b.score / b.max) - (a.score / a.max));
+            const primaryTalent = scores[0];
+            const secondaryTalent = scores[1];
+            
+            let recommendation = '';
+            let description = '';
+            
+            const appliedPosition = positionData.position;
+            
+            if (primaryTalent.type === 'dynamo') {
+                description = `您是天生的<strong>創新者</strong><span class="score-badge">優勢天賦</span><br>擅長突破常規、開創新局,適合需要創意思維的職位。您能將新穎的想法轉化為實際行動,在變化快速的環境中如魚得水。`;
+                
+                if (appliedPosition === '重訓教練') {
+                    recommendation = '您的創意天賦非常適合<strong>課程設計</strong>與<strong>訓練創新</strong>!建議您可以:<br>• 開發獨特的訓練課程和動作組合<br>• 為不同客戶設計個性化的訓練計畫<br>• 嘗試結合新興訓練方法,創造差異化服務';
+                } else if (appliedPosition === '器械皮拉提斯教練') {
+                    recommendation = '您的創意能為皮拉提斯教學帶來新意!建議:<br>• 設計創新的器械訓練組合<br>• 開發融合不同風格的課程<br>• 用創意方式解釋動作要領,讓學員更易理解';
+                } else if (appliedPosition === '伸展師') {
+                    recommendation = '您可以在伸展領域發揮創意!建議:<br>• 結合不同伸展技術,創造獨特手法<br>• 開發針對特定需求的伸展方案<br>• 用創新方式提升客戶體驗';
+                } else if (appliedPosition === 'AI分析師') {
+                    recommendation = '您的創新思維很適合AI應用開發!建議:<br>• 探索AI在運動分析的創新應用<br>• 設計更直觀的數據呈現方式<br>• 開發新的評估指標和分析模型';
+                }
+            } else if (primaryTalent.type === 'blaze') {
+                description = `您擁有卓越的<strong>熱情與感染力</strong><span class="score-badge">優勢天賦</span><br>善於激勵他人、建立士氣,最適合需要激發團隊動力的職位。您的熱情能點燃他人的潛能,是團隊中的能量核心。`;
+                
+                if (appliedPosition === '重訓教練') {
+                    recommendation = '您的人際魅力是教練工作的最大優勢!建議:<br>• 專注於建立深厚的教練-學員關係<br>• 用您的熱情激勵學員突破瓶頸<br>• 發展小團體課程,發揮您的團隊凝聚力<br>• 成為會員社群的核心人物';
+                } else if (appliedPosition === '器械皮拉提斯教練') {
+                    recommendation = '您的親和力能讓學員更投入課程!建議:<br>• 營造溫馨的課堂氛圍<br>• 用鼓勵和正向回饋激勵學員<br>• 建立學員之間的連結和互動';
+                } else if (appliedPosition === '伸展師') {
+                    recommendation = '您的同理心能提供絕佳的服務體驗!建議:<br>• 深入了解客戶需求,建立信任關係<br>• 用溫暖的互動讓客戶感到放鬆<br>• 成為客戶長期信賴的伸展師';
+                } else if (appliedPosition === 'AI分析師') {
+                    recommendation = '您能將冰冷的數據變得有溫度!建議:<br>• 用同理心理解使用者需求<br>• 設計更人性化的分析報告<br>• 擔任技術團隊與客戶之間的橋樑';
+                }
+            } else if (primaryTalent.type === 'tempo') {
+                description = `您具備優秀的<strong>執行力與穩定性</strong><span class="score-badge">優勢天賦</span><br>注重細節、流程化思維,擅長將想法落實為標準作業。您的可靠性讓團隊能夠穩定運作,是組織中不可或缺的支柱。`;
+                
+                if (appliedPosition === '重訓教練') {
+                    recommendation = '您的系統化思維適合精準訓練!建議:<br>• 建立完整的訓練進度追蹤系統<br>• 專注於<strong>矯正性訓練</strong>和<strong>功能性訓練</strong><br>• 制定詳細的週期化訓練計畫<br>• 精確記錄並分析學員進步數據';
+                } else if (appliedPosition === '器械皮拉提斯教練') {
+                    recommendation = '您的細緻度很適合皮拉提斯教學!建議:<br>• 專注於動作的精準指導<br>• 建立系統化的教學流程<br>• 仔細評估學員的身體狀況和進度';
+                } else if (appliedPosition === '伸展師') {
+                    recommendation = '您的細心能提供專業服務!建議:<br>• 建立標準化的評估和操作流程<br>• 詳細記錄每次服務的重點<br>• 按部就班地執行伸展計畫';
+                } else if (appliedPosition === 'AI分析師') {
+                    recommendation = '您的系統化思維很適合數據分析!建議:<br>• 建立完整的分析流程和標準<br>• 確保數據品質和分析準確性<br>• 開發可重複使用的分析模板';
+                }
+            } else {
+                description = `您擁有深度的<strong>分析能力</strong><span class="score-badge">優勢天賦</span><br>善於收集資訊、深入研究,在做決策前會充分評估。您的邏輯思維能為組織提供精準的策略建議。`;
+                
+                if (appliedPosition === '重訓教練') {
+                    recommendation = '您的分析力適合科學化訓練!建議:<br>• 深入研究運動科學和訓練理論<br>• 專注於<strong>力量訓練</strong>的數據化管理<br>• 用科學方法分析訓練效果<br>• 為學員提供基於數據的訓練建議';
+                } else if (appliedPosition === '器械皮拉提斯教練') {
+                    recommendation = '您的精準度能提升教學品質!建議:<br>• 深入研究解剖學和動作力學<br>• 精確分析學員的動作模式<br>• 用理論支持您的教學方法';
+                } else if (appliedPosition === '伸展師') {
+                    recommendation = '您的專業性能建立信任!建議:<br>• 深入學習筋膜理論和身體結構<br>• 精準評估客戶的身體狀況<br>• 用專業知識解釋服務原理';
+                } else if (appliedPosition === 'AI分析師') {
+                    recommendation = '您的天賦完美契合AI分析工作!建議:<br>• 深入研究機器學習和數據科學<br>• 建立嚴謹的分析方法論<br>• 用數據洞察為決策提供支持<br>• 持續優化分析模型的準確性';
+                }
+            }
+            
+            const primaryPercentage = (primaryTalent.score / primaryTalent.max) * 100;
+            const secondaryPercentage = (secondaryTalent.score / secondaryTalent.max) * 100;
+            
+            if (Math.abs(primaryPercentage - secondaryPercentage) <= 20 && secondaryPercentage >= 40) {
+                let secondaryTalentDesc = '';
+                if (secondaryTalent.type === 'dynamo') {
+                    secondaryTalentDesc = '同時具備創新突破的能力';
+                } else if (secondaryTalent.type === 'blaze') {
+                    secondaryTalentDesc = '同時擁有出色的人際互動能力';
+                } else if (secondaryTalent.type === 'tempo') {
+                    secondaryTalentDesc = '同時展現穩定的執行力';
+                } else {
+                    secondaryTalentDesc = '同時具備深度分析能力';
+                }
+                
+                description += `<br><br>值得一提的是,您在<strong>${secondaryTalent.name}</strong>方面也有${secondaryTalent.score.toFixed(1)}/${secondaryTalent.max}分的表現,${secondaryTalentDesc},這讓您成為<strong>複合型人才</strong>,能在多元化的工作環境中發揮更大價值。`;
+            }
+            
+            const scoreInterpretation = `
+                <div class="score-interpretation">
+                    <div class="score-interpretation-title">📊 天賦能量解讀</div>
+                    <div class="score-interpretation-list">
+                        <strong>💡 如何理解您的天賦分數?</strong><br><br>
+                        
+                        每個人都有獨特的天賦組合,分數高低代表您在該能量上的<strong>自然傾向</strong>:<br><br>
+                        
+                        <strong style="color: #7ac19a;">● 高分能量 (4-5分)</strong><br>
+                        這是您的<strong>優勢天賦</strong>,做起來特別得心應手、充滿能量。在工作中盡量發揮這些天賦,會讓您事半功倍且樂在其中。<br><br>
+                        
+                        <strong style="color: #9fcccc;">● 中等能量 (2-3分)</strong><br>
+                        您可以<strong>靈活運用</strong>這些能量,雖然不是最自然的模式,但在需要時也能勝任。適合作為輔助能力。<br><br>
+                        
+                        <strong style="color: #ba9e60;">● 低分能量 (0-1分)</strong><br>
+                        這不代表您「不擅長」,而是這<strong>不是您的自然傾向</strong>。與其硬撐,不如尋求團隊互補或調整工作方式。<br><br>
+                        
+                        <strong style="color: #f2ac98;">🎯 重點提醒</strong><br>
+                        沒有「完美」的天賦組合!關鍵是找到能讓您發揮優勢的職位與工作方式,並與擁有不同天賦的人互補合作。
+                    </div>
+                </div>
+            `;
+            
+            document.getElementById('recommendedPosition').innerHTML = description + '<br><br><strong style="color: #c67566;">💼 針對『' + appliedPosition + '』的發展建議:</strong><br>' + recommendation + scoreInterpretation;
+        }
+function nextSection(current) {
+            if (current === 1) {
+                document.getElementById('sectionResult').classList.remove('active');
+                currentSection = 2;
+                document.getElementById('section2').classList.add('active');
+                updateProgress();
+                window.scrollTo(0, 0);
+                return;
+            }
+
+            if (current === 2) {
+                const name = document.getElementById('name').value.trim();
+                const phone = document.getElementById('phone').value.trim();
+                const gender = document.querySelector('input[name="gender"]:checked');
+                const birthYear = document.getElementById('birthYear').value;
+                const birthMonth = document.getElementById('birthMonth').value;
+                const birthDay = document.getElementById('birthDay').value;
+                const email = document.getElementById('email').value.trim();
+
+                if (!name) {
+                    alert('請填寫姓名');
+                    return;
+                }
+
+                if (!phone || !/^09[0-9]{8}$/.test(phone)) {
+                    alert('電話格式錯誤,請輸入 09 開頭共 10 碼的手機號碼');
+                    return;
+                }
+
+                if (!gender) {
+                    alert('請選擇性別');
+                    return;
+                }
+
+                if (!birthYear || !birthMonth || !birthDay) {
+                    alert('請選擇完整的出生日期');
+                    return;
+                }
+
+                if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                    alert('信箱格式錯誤,請輸入完整的電子信箱地址');
+                    return;
+                }
+
+                document.getElementById('section2').classList.remove('active');
+                currentSection = 3;
+                document.getElementById('section3').classList.add('active');
+                updateProgress();
+                window.scrollTo(0, 0);
+                return;
+            }
+
+            if (current === 3) {
+                const work3years = document.querySelector('input[name="work3years"]:checked');
+                const lastJobLeaveReason = document.getElementById('lastJobLeaveReason').value.trim();
+                const familyInteraction = document.querySelector('input[name="familyInteraction"]:checked');
+                const parentQuote = document.getElementById('parentQuote').value.trim();
+                const failureExperience = document.getElementById('failureExperience').value.trim();
+                const learningInitiative = document.getElementById('learningInitiative').value.trim();
+                const newSkillArrangement = document.getElementById('newSkillArrangement').value.trim();
+                const futureGoal = document.getElementById('futureGoal').value.trim();
+
+                if (!work3years || !lastJobLeaveReason || !familyInteraction || !parentQuote || 
+                    !failureExperience || !learningInitiative || !newSkillArrangement || !futureGoal) {
+                    alert('請填寫所有必填欄位');
+                    return;
+                }
+
+                if (work3years.value === '有') {
+                    const leaveReason3Years = document.getElementById('leaveReason3Years').value.trim();
+                    if (!leaveReason3Years) {
+                        alert('請填寫離開那份工作的原因');
+                        return;
+                    }
+                } else {
+                    const longestWorkDuration = document.getElementById('longestWorkDuration').value.trim();
+                    if (!longestWorkDuration) {
+                        alert('請填寫最久的工作時間');
+                        return;
+                    }
+                }
+
+                // 🔥 計算學習評分(隱藏評分,不顯示給用戶)
+                learningScores.learningBehavior = calculateLearningBehaviorScore(learningInitiative);
+                learningScores.crossSkillInvestment = calculateCrossSkillScore(newSkillArrangement);
+
+                document.getElementById('section3').classList.remove('active');
+                currentSection = 4;
+                document.getElementById('section4').classList.add('active');
+                updateProgress();
+                window.scrollTo(0, 0);
+                return;
+            }
+        }
+
+        function prevSection(current) {
+            if (current === '1b') {
+                document.getElementById('section1b').classList.remove('active');
+                currentSection = 1;
+                document.getElementById('section1').classList.add('active');
+                updateProgress();
+                window.scrollTo(0, 0);
+                return;
+            }
+
+            if (current === 2) {
+                document.getElementById('section2').classList.remove('active');
+                currentSection = 1.5;
+                document.getElementById('sectionResult').classList.add('active');
+                updateProgress();
+                window.scrollTo(0, 0);
+                return;
+            }
+
+            if (current === 3) {
+                document.getElementById('section3').classList.remove('active');
+                currentSection = 2;
+                document.getElementById('section2').classList.add('active');
+                updateProgress();
+                window.scrollTo(0, 0);
+                return;
+            }
+
+            if (current === 4) {
+                document.getElementById('section4').classList.remove('active');
+                currentSection = 3;
+                document.getElementById('section3').classList.add('active');
+                updateProgress();
+                window.scrollTo(0, 0);
+                return;
+            }
+        }
+
+        function updateProgress() {
+            let progress, stepNumber;
+            
+            if (currentSection === 1) {
+                progress = (1 / totalSections) * 100;
+                stepNumber = 1;
+            } else if (currentSection === 1.5) {
+                progress = (2 / totalSections) * 100;
+                stepNumber = 2;
+            } else if (currentSection === 2) {
+                progress = (3 / totalSections) * 100;
+                stepNumber = 3;
+            } else if (currentSection === 3) {
+                progress = (4 / totalSections) * 100;
+                stepNumber = 4;
+            } else if (currentSection === 4) {
+                progress = (5 / totalSections) * 100;
+                stepNumber = 5;
+            } else {
+                progress = 100;
+                stepNumber = 6;
+            }
+            
+            const progressFill = document.getElementById('progressFill');
+            if (progressFill) {
+                progressFill.style.width = progress + '%';
+            }
+            
+            for (let i = 1; i <= 6; i++) {
+                const stepElement = document.getElementById('step' + i);
+                if (stepElement) {
+                    stepElement.classList.remove('active', 'completed');
+                    
+                    if (i < stepNumber) {
+                        stepElement.classList.add('completed');
+                    } else if (i === stepNumber) {
+                        stepElement.classList.add('active');
+                    }
+                }
+            }
+        }
+
+        const selectedFiles = {
+            imageFiles: [],
+            pdfFiles: []
+        };
+
+        function handleFileSelect(input, previewId) {
+            const previewContainer = document.getElementById(previewId);
+            if (!input || !input.files || !previewContainer) {
+                return;
+            }
+
+            const inputId = input.id;
+
+            if (input.files.length > 0) {
+                const newFiles = Array.from(input.files);
+                const existingFiles = selectedFiles[inputId] || [];
+                
+                const isImageInput = inputId === 'imageFiles';
+                const isPdfInput = inputId === 'pdfFiles';
+                
+                const invalidFiles = [];
+                const validFiles = [];
+                
+                newFiles.forEach(newFile => {
+                    const fileType = newFile.type.toLowerCase();
+                    const fileName = newFile.name.toLowerCase();
+                    
+                    let isValidType = false;
+                    
+                    if (isImageInput) {
+                        isValidType = 
+                            fileType === 'image/jpeg' ||
+                            fileType === 'image/jpg' ||
+                            fileType === 'image/png' ||
+                            fileName.endsWith('.jpg') ||
+                            fileName.endsWith('.jpeg') ||
+                            fileName.endsWith('.png');
+                    } else if (isPdfInput) {
+                        isValidType = 
+                            fileType === 'application/pdf' ||
+                            fileName.endsWith('.pdf');
+                    } else {
+                        isValidType = true;
+                    }
+                    
+                    if (!isValidType) {
+                        invalidFiles.push(newFile.name);
+                    } else {
+                        const isDuplicate = existingFiles.some(existingFile => 
+                            existingFile.name === newFile.name && existingFile.size === newFile.size
+                        );
+                        if (!isDuplicate) {
+                            validFiles.push(newFile);
+                        }
+                    }
+                });
+                
+                if (invalidFiles.length > 0) {
+                    const expectedFormat = isImageInput ? '圖片 (JPG/PNG)' : 'PDF';
+                    alert('以下檔案格式不符合,已自動排除:\n\n' + invalidFiles.join('\n') + '\n\n此欄位僅支援: ' + expectedFormat);
+                }
+                
+                validFiles.forEach(file => existingFiles.push(file));
+                selectedFiles[inputId] = existingFiles;
+
+                const dt = new DataTransfer();
+                existingFiles.forEach(file => dt.items.add(file));
+                input.files = dt.files;
+            }
+
+            const allFiles = selectedFiles[inputId] || [];
+            
+            if (allFiles.length === 0) {
+                previewContainer.classList.remove('show');
+                previewContainer.innerHTML = '';
+                updateTotalSize();
+                return;
+            }
+
+            const maxSingleSize = 3 * 1024 * 1024;
+            const oversizedFiles = [];
+            allFiles.forEach(file => {
+                if (file.size > maxSingleSize) {
+                    oversizedFiles.push(file.name + ' (' + (file.size / (1024 * 1024)).toFixed(1) + ' MB)');
+                }
+            });
+
+            if (oversizedFiles.length > 0) {
+                alert('以下檔案超過 3MB,建議壓縮後再上傳:\n\n' + oversizedFiles.join('\n') + '\n\n過大的檔案可能導致提交失敗!');
+            }
+
+            previewContainer.innerHTML = '<div class="file-preview-title">已選擇 ' + allFiles.length + ' 個檔案:</div><div class="file-preview-list" id="' + previewId + '_list"></div>';
+            previewContainer.classList.add('show');
+
+            const listContainer = document.getElementById(previewId + '_list');
+
+            allFiles.forEach((file, index) => {
+                const item = document.createElement('div');
+                item.className = 'file-preview-item';
+                item.dataset.index = index;
+
+                const fileType = file.type;
+                let iconHtml = '';
+
+                if (fileType.startsWith('image/')) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        const img = item.querySelector('.file-preview-icon');
+                        if (img) {
+                            img.src = e.target.result;
+                        }
+                    };
+                    reader.readAsDataURL(file);
+                    iconHtml = '<img class="file-preview-icon" src="" alt="預覽">';
+                } else if (fileType === 'application/pdf') {
+                    iconHtml = '<div class="file-preview-icon pdf">PDF</div>';
+                } else if (fileType.includes('word') || fileType.includes('document')) {
+                    iconHtml = '<div class="file-preview-icon doc">DOC</div>';
+                } else {
+                    iconHtml = '<div class="file-preview-icon doc">📄</div>';
+                }
+
+                const fileSize = file.size < 1024 * 1024 
+                    ? (file.size / 1024).toFixed(1) + ' KB'
+                    : (file.size / (1024 * 1024)).toFixed(1) + ' MB';
+
+                const sizeClass = file.size > maxSingleSize ? 'style="color: #f2ac98; font-weight: bold;"' : '';
+
+                item.innerHTML = `
+                    ${iconHtml}
+                    <div class="file-preview-info">
+                        <div class="file-preview-name">${file.name}</div>
+                        <div class="file-preview-size" ${sizeClass}>${fileSize}</div>
+                    </div>
+                    <button class="file-preview-remove" onclick="removeFile('${inputId}', '${previewId}', ${index})" type="button">×</button>
+                `;
+
+                listContainer.appendChild(item);
+            });
+
+            updateTotalSize();
+        }
+
+        function removeFile(inputId, previewId, index) {
+            const input = document.getElementById(inputId);
+            if (!input) return;
+
+            if (selectedFiles[inputId]) {
+                selectedFiles[inputId].splice(index, 1);
+            }
+
+            const dt = new DataTransfer();
+            selectedFiles[inputId].forEach(file => dt.items.add(file));
+            input.files = dt.files;
+
+            if (selectedFiles[inputId].length > 0) {
+                handleFileSelect(input, previewId);
+            } else {
+                const previewContainer = document.getElementById(previewId);
+                previewContainer.classList.remove('show');
+                previewContainer.innerHTML = '';
+                updateTotalSize();
+            }
+        }
+
+        function updateTotalSize() {
+            let totalSize = 0;
+            
+            Object.keys(selectedFiles).forEach(key => {
+                if (selectedFiles[key]) {
+                    selectedFiles[key].forEach(file => {
+                        totalSize += file.size;
+                    });
+                }
+            });
+
+            const totalSizeDisplay = document.getElementById('totalSizeDisplay');
+            const totalSizeValue = document.getElementById('totalSizeValue');
+            const maxTotalSize = 5 * 1024 * 1024;
+
+            if (totalSize > 0) {
+                totalSizeDisplay.style.display = 'block';
+                const sizeMB = (totalSize / (1024 * 1024)).toFixed(2);
+                totalSizeValue.textContent = sizeMB + ' MB';
+
+                if (totalSize > maxTotalSize) {
+                    totalSizeDisplay.classList.add('warning');
+                    totalSizeValue.textContent = sizeMB + ' MB ⚠️ 超過限制!';
+                } else {
+                    totalSizeDisplay.classList.remove('warning');
+                }
+            } else {
+                totalSizeDisplay.style.display = 'none';
+            }
+        }
+
+        // 🔥 圖片壓縮函數
+        function compressImage(base64, quality = 0.7) {
+            return new Promise((resolve) => {
+                const img = new Image();
+                img.onload = () => {
+                    const canvas = document.createElement('canvas');
+                    
+                    // 限制最大寬度為 1920px
+                    const maxWidth = 1920;
+                    let width = img.width;
+                    let height = img.height;
+                    
+                    if (width > maxWidth) {
+                        height = (height * maxWidth) / width;
+                        width = maxWidth;
+                    }
+                    
+                    canvas.width = width;
+                    canvas.height = height;
+                    
+                    const ctx = canvas.getContext('2d');
+                    ctx.drawImage(img, 0, 0, width, height);
+                    
+                    // 壓縮並轉為 Base64
+                    resolve(canvas.toDataURL('image/jpeg', quality));
+                };
+                img.src = base64;
+            });
+        }
+async function submitForm() {
+            const name = document.getElementById('name').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const gender = document.querySelector('input[name="gender"]:checked')?.value;
+            const birthYear = document.getElementById('birthYear').value;
+            const birthMonth = document.getElementById('birthMonth').value;
+            const birthDay = document.getElementById('birthDay').value;
+            const email = document.getElementById('email').value.trim();
+
+            if (!name || !phone || !gender || !birthYear || !birthMonth || !birthDay || !email) {
+                alert('請填寫所有必填欄位');
+                return;
+            }
+
+            if (!/^09[0-9]{8}$/.test(phone)) {
+                alert('電話格式錯誤,請輸入 09 開頭共 10 碼的手機號碼');
+                return;
+            }
+
+            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                alert('信箱格式錯誤,請輸入完整的電子信箱地址');
+                return;
+            }
+
+            let totalSize = 0;
+            Object.keys(selectedFiles).forEach(key => {
+                if (selectedFiles[key]) {
+                    selectedFiles[key].forEach(file => {
+                        totalSize += file.size;
+                    });
+                }
+            });
+
+            const maxTotalSize = 5 * 1024 * 1024;
+            if (totalSize > maxTotalSize) {
+                alert('檔案總大小超過 5MB 限制!\n\n目前總大小: ' + (totalSize / (1024 * 1024)).toFixed(2) + ' MB\n\n請刪除部分檔案或壓縮後再試。');
+                return;
+            }
+
+            const birthday = `${birthYear}-${birthMonth}-${birthDay}`;
+
+            currentSection = 5;
+            updateProgress();
+
+            document.getElementById('section4').style.display = 'none';
+            document.getElementById('loading').classList.add('show');
+
+            const imageFiles = selectedFiles.imageFiles || [];
+            const pdfFiles = selectedFiles.pdfFiles || [];
+
+            // 🔥 修正:檔案轉 Base64 函數(加上圖片壓縮)
+            async function fileToBase64(file) {
+                return new Promise(async (resolve, reject) => {
+                    if (!file) {
+                        resolve(null);
+                        return;
+                    }
+                    const reader = new FileReader();
+                    reader.onload = async () => {
+                        let result = reader.result;
+                        
+                        // 🔥 如果是圖片且大於 500KB,進行壓縮
+                        if (file.type.startsWith('image/') && file.size > 500 * 1024) {
+                            try {
+                                result = await compressImage(result, 0.7);
+                            } catch (err) {
+                                console.warn('圖片壓縮失敗,使用原始檔案:', err);
+                            }
+                        }
+                        
+                        resolve({
+                            name: file.name,
+                            type: file.type,
+                            size: file.size,
+                            data: result
+                        });
+                    };
+                    reader.onerror = reject;
+                    reader.readAsDataURL(file);
+                });
+            }
+
+            try {
+                // 處理圖片檔案
+                const imageFileData = [];
+                const imageFileNames = [];
+                for (let i = 0; i < imageFiles.length; i++) {
+                    const fileData = await fileToBase64(imageFiles[i]);
+                    if (fileData) {
+                        imageFileData.push(fileData);
+                        imageFileNames.push(imageFiles[i].name);
+                    }
+                }
+                
+                // 處理 PDF 檔案
+                const pdfFileData = [];
+                const pdfFileNames = [];
+                for (let i = 0; i < pdfFiles.length; i++) {
+                    const fileData = await fileToBase64(pdfFiles[i]);
+                    if (fileData) {
+                        pdfFileData.push(fileData);
+                        pdfFileNames.push(pdfFiles[i].name);
+                    }
+                }
+                
+                // 產生檔案清單
+                const fileList = [];
+                imageFileNames.forEach(name => fileList.push(`${name}(圖片)`));
+                pdfFileNames.forEach(name => fileList.push(`${name}(PDF)`));
+                const fileListString = fileList.join(' | ');
+                
+                // 產生圖表圖片
+                const talentChartCanvas = document.getElementById('talentChart');
+                const talentChartImage = talentChartCanvas ? talentChartCanvas.toDataURL('image/png') : '';
+                
+                const lifeValueChartCanvas = document.getElementById('lifeValueChart');
+                const lifeValueChartImage = lifeValueChartCanvas ? lifeValueChartCanvas.toDataURL('image/png') : '';
+
+                // 🔥 修正:組合完整的表單資料
+                const formData = {
+                    submittedAt: new Date().toISOString(),
+                    
+                    // 職位資訊
+                    position: positionData.position || '',
+                    specialty_1: positionData.specialty_1 || '',
+                    specialty_2: positionData.specialty_2 || '',
+                    medicalBackground: positionData.medicalBackground || '',
+                    
+                    // 個人資料
+                    name: name,
+                    phone: phone,
+                    phoneDisplay: phone,
+                    gender: gender,
+                    birthday: birthday,
+                    email: email,
+                    
+                    // 天賦分數
+                    talent_dynamo: talentScores.dynamo || 0,
+                    talent_blaze: talentScores.blaze || 0,
+                    talent_tempo: talentScores.tempo || 0,
+                    talent_steel: talentScores.steel || 0,
+                    talent_dynamo_raw: talentScores.raw?.dynamo || 0,
+                    talent_blaze_raw: talentScores.raw?.blaze || 0,
+                    talent_tempo_raw: talentScores.raw?.tempo || 0,
+                    talent_steel_raw: talentScores.raw?.steel || 0,
+                    
+                    // 深度問答
+                    work3years: document.querySelector('input[name="work3years"]:checked')?.value || '',
+                    leaveReason3Years: document.getElementById('leaveReason3Years')?.value || '',
+                    longestWorkDuration: document.getElementById('longestWorkDuration')?.value || '',
+                    lastJobLeaveReason: document.getElementById('lastJobLeaveReason')?.value || '',
+                    familyInteraction: document.querySelector('input[name="familyInteraction"]:checked')?.value || '',
+                    parentQuote: document.getElementById('parentQuote')?.value || '',
+                    
+                    // 人生價值觀
+                    lifeValue_career: lifeValueScores.career || 0,
+                    lifeValue_money: lifeValueScores.money || 0,
+                    lifeValue_family: lifeValueScores.family || 0,
+                    lifeValue_relationship: lifeValueScores.relationship || 0,
+                    lifeValue_health: lifeValueScores.health || 0,
+                    lifeValue_alone: lifeValueScores.alone || 0,
+                    lifeValue_friends: lifeValueScores.friends || 0,
+                    
+                    // 經驗與目標
+                    failureExperience: document.getElementById('failureExperience')?.value || '',
+                    learningInitiative: document.getElementById('learningInitiative')?.value || '',
+                    newSkillArrangement: document.getElementById('newSkillArrangement')?.value || '',
+                    futureGoal: document.getElementById('futureGoal')?.value || '',
+                    
+                    // 🔥 學習評分(隱藏評分)
+                    learningBehaviorScore: learningScores.learningBehavior || 0,
+                    crossSkillInvestmentScore: learningScores.crossSkillInvestment || 0,
+                    managementPotentialScore: (learningScores.learningBehavior + learningScores.crossSkillInvestment) || 0,
+                    
+                    // 檔案資訊
+                    imageFileCount: imageFiles.length,
+                    imageFileList: imageFileNames.join(' | '),
+                    pdfFileCount: pdfFiles.length,
+                    pdfFileList: pdfFileNames.join(' | '),
+                    totalFileCount: imageFiles.length + pdfFiles.length,
+                    fileList: fileListString,
+                    
+                    // 圖表圖片
+                    talentChartImage: talentChartImage,
+                    lifeValueChartImage: lifeValueChartImage,
+                    
+                    // 檔案資料
+                    imageFiles: imageFileData,
+                    pdfFiles: pdfFileData,
+                    
+                    // 檔案名稱(供 Make.com 使用)
+                    image_1_name: imageFileNames[0] || '',
+                    image_2_name: imageFileNames[1] || '',
+                    image_3_name: imageFileNames[2] || '',
+                    pdf_1_name: pdfFileNames[0] || '',
+                    pdf_2_name: pdfFileNames[1] || '',
+                    pdf_3_name: pdfFileNames[2] || ''
+                };
+
+                console.log('準備提交資料,大小:', JSON.stringify(formData).length, 'bytes');
+
+                // 🔥 發送到 API (Cloudflare Worker 或 Make.com)
+                const response = await fetch(API_ENDPOINT, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData)
+                });
+
+                document.getElementById('loading').classList.remove('show');
+                
+                console.log('API 回應狀態:', response.status);
+
+                if (response.ok || response.status === 200) {
+                    currentSection = 6;
+                    updateProgress();
+                    
+                    document.getElementById('successMessage').classList.add('show');
+                    
+                    console.log('✅ 提交成功!');
+                } else {
+                    const errorText = await response.text();
+                    console.error('❌ 提交失敗:', response.status, errorText);
+                    
+                    let errorMessage = '提交失敗,請稍後再試。\n\n';
+                    errorMessage += '錯誤代碼: ' + response.status + '\n';
+                    
+                    if (response.status === 400) {
+                        errorMessage += '\n可能原因:\n';
+                        errorMessage += '• 資料格式錯誤\n';
+                        errorMessage += '• 檔案過大或格式不正確\n';
+                        errorMessage += '• 請檢查所有欄位是否正確填寫\n\n';
+                        errorMessage += '建議:\n';
+                        errorMessage += '1. 減少上傳檔案數量\n';
+                        errorMessage += '2. 壓縮圖片後再試\n';
+                        errorMessage += '3. 確認所有必填欄位已填寫';
+                    } else if (response.status === 413) {
+                        errorMessage += '\n檔案過大!請減少檔案數量或壓縮後再試。';
+                    } else if (response.status === 500) {
+                        errorMessage += '\n伺服器錯誤,請稍後再試或聯繫技術人員。';
+                    }
+                    
+                    alert(errorMessage);
+                    document.getElementById('section4').style.display = 'block';
+                    currentSection = 4;
+                    updateProgress();
+                }
+            } catch (error) {
+                console.error('❌ 提交錯誤:', error);
+                document.getElementById('loading').classList.remove('show');
+                
+                let errorMessage = '提交時發生錯誤:\n\n';
+                errorMessage += error.message + '\n\n';
+                errorMessage += '可能原因:\n';
+                errorMessage += '• 網路連線問題\n';
+                errorMessage += '• 檔案過大\n';
+                errorMessage += '• 瀏覽器不支援\n\n';
+                errorMessage += '建議:\n';
+                errorMessage += '1. 檢查網路連線\n';
+                errorMessage += '2. 減少上傳檔案\n';
+                errorMessage += '3. 使用最新版 Chrome 或 Safari\n';
+                errorMessage += '4. 稍後再試';
+                
+                alert(errorMessage);
+                document.getElementById('section4').style.display = 'block';
+                currentSection = 4;
+                updateProgress();
+            }
+        }
+    </script>
+</body>
+</html>
