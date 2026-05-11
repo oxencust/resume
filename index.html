@@ -1428,8 +1428,8 @@
             <label class="radio-label" for="dept_education"><span>🎓 教務部</span></label>
         </div>
         <div class="radio-option">
-            <input type="radio" id="dept_admin" name="department" value="行政部" onchange="toggleDepartment('admin')">
-            <label class="radio-label" for="dept_admin"><span>🏢 行政部</span></label>
+            <input type="radio" id="dept_admin" name="department" value="客戶服務部" onchange="toggleDepartment('admin')">
+            <label class="radio-label" for="dept_admin"><span>🏢 客戶服務部</span></label>
         </div>
     </div>
 </div>
@@ -1480,13 +1480,13 @@
     </div>
 </div>
 
-<!-- 行政部職位 -->
+<!-- 客戶服務部職位 -->
 <div class="form-group" id="admin_positions" style="display: none;">
     <label class="form-label required">您想應徵的職位</label>
     <div class="radio-group" style="flex-direction: column; gap: 10px;">
         <div class="radio-option">
-            <input type="radio" id="position_customer_service" name="position" value="客服行政專員" onchange="togglePositionDetails('admin')">
-            <label class="radio-label" for="position_customer_service"><span>📞 客服行政專員</span></label>
+            <input type="radio" id="position_customer_service" name="position" value="營運服務專員" onchange="togglePositionDetails('admin')">
+            <label class="radio-label" for="position_customer_service"><span>📞 營運服務專員</span></label>
         </div>
         <div class="radio-option">
             <input type="radio" id="position_sales" name="position" value="業務人員" onchange="togglePositionDetails('admin')">
@@ -2805,8 +2805,8 @@ else if (appliedPosition === '營運經理') {
 } else if (appliedPosition === '肌肉賦能伸展教練經理') {
     recommendation = '您的創意思維能為伸展服務帶來突破!建議:<br>• 開發創新的伸展技術和流程<br>• 設計獨特的客戶服務體驗<br>• 帶領團隊探索新的服務模式';
 }
-// 行政部職位
-else if (appliedPosition === '客服行政專員') {
+// 客戶服務部職位
+else if (appliedPosition === '營運服務專員') {
     recommendation = '您的創意天賦能提升客戶服務體驗!建議:<br>• 設計創新的客戶服務流程<br>• 開發更有效的客戶溝通方式<br>• 提出改善行政效率的新點子';
 } else if (appliedPosition === '業務人員') {
     recommendation = '您的創新思維是業務開發的優勢!建議:<br>• 開發獨特的銷售策略和話術<br>• 設計創新的客戶開發方案<br>• 提出差異化的產品組合建議';
@@ -2835,8 +2835,8 @@ else if (appliedPosition === '營運經理') {
 } else if (appliedPosition === '肌肉賦能伸展教練經理') {
     recommendation = '您的同理心能打造優質服務團隊!建議:<br>• 培養團隊的服務熱忱<br>• 建立客戶導向的服務文化<br>• 用溫暖的領導凝聚團隊向心力';
 }
-// 行政部職位
-else if (appliedPosition === '客服行政專員') {
+// 客戶服務部職位
+else if (appliedPosition === '營運服務專員') {
     recommendation = '您的親和力是客服工作的天賦!建議:<br>• 用溫暖的態度服務每位客戶<br>• 建立良好的客戶關係和口碑<br>• 成為客戶信賴的服務窗口';
 } else if (appliedPosition === '業務人員') {
     recommendation = '您的人際魅力是業務成功的關鍵!建議:<br>• 用真誠的態度建立客戶信任<br>• 發展長期穩定的客戶關係<br>• 透過人脈網絡開發新客源';
@@ -2865,9 +2865,9 @@ else if (appliedPosition === '營運經理') {
 } else if (appliedPosition === '肌肉賦能伸展教練經理') {
     recommendation = '您的系統化思維適合服務管理!建議:<br>• 建立標準化的服務流程<br>• 確保每位客戶獲得一致的體驗<br>• 穩定提升團隊的服務品質';
 }
-// 行政部職位
-else if (appliedPosition === '客服行政專員') {
-    recommendation = '您的可靠性是行政工作的優勢!建議:<br>• 建立有條理的行政作業流程<br>• 確保各項事務準時完成<br>• 提供穩定可靠的服務品質';
+// 客戶服務部職位
+else if (appliedPosition === '營運服務專員') {
+    recommendation = '您的可靠性是服務工作的優勢!建議:<br>• 建立有條理的服務作業流程<br>• 確保各項事務準時完成<br>• 提供穩定可靠的服務品質';
 } else if (appliedPosition === '業務人員') {
     recommendation = '您的穩定性能建立客戶信任!建議:<br>• 建立系統化的客戶跟進流程<br>• 按部就班地開發和維護客戶<br>• 用可靠的服務贏得客戶長期合作';
 } else if (appliedPosition === '行銷人員') {
@@ -2895,9 +2895,9 @@ else if (appliedPosition === '營運經理') {
 } else if (appliedPosition === '肌肉賦能伸展教練經理') {
     recommendation = '您的專業深度是團隊的基石!建議:<br>• 深入研究筋膜理論和身體結構<br>• 建立科學化的服務評估標準<br>• 用專業知識培訓和指導團隊';
 }
-// 行政部職位
-else if (appliedPosition === '客服行政專員') {
-    recommendation = '您的細心能確保工作準確!建議:<br>• 仔細處理每一項行政細節<br>• 建立完整的客戶資料管理<br>• 用精準的資訊回應客戶需求';
+// 客戶服務部職位
+else if (appliedPosition === '營運服務專員') {
+    recommendation = '您的細心能確保工作準確!建議:<br>• 仔細處理每一項服務細節<br>• 建立完整的客戶資料管理<br>• 用精準的資訊回應客戶需求';
 } else if (appliedPosition === '業務人員') {
     recommendation = '您的分析力能精準掌握客戶!建議:<br>• 深入分析客戶需求和市場趨勢<br>• 用數據支持業務決策和策略<br>• 建立完整的客戶分析資料庫';
 } else if (appliedPosition === '行銷人員') {
