@@ -1420,62 +1420,81 @@
     <label class="form-label required">應徵部門</label>
     <div class="radio-group" style="flex-direction: column; gap: 10px;">
         <div class="radio-option">
-            <input type="radio" id="dept_course" name="department" value="課程服務部" onchange="toggleDepartment('course')">
-            <label class="radio-label" for="dept_course"><span>📚 課程服務部</span></label>
-        </div>
-        <div class="radio-option">
-            <input type="radio" id="dept_education" name="department" value="教務部" onchange="toggleDepartment('education')">
-            <label class="radio-label" for="dept_education"><span>🎓 教務部</span></label>
+            <input type="radio" id="dept_prof" name="department" value="專業服務部" onchange="toggleDepartment('prof')">
+            <label class="radio-label" for="dept_prof"><span>🏋️ 專業服務部</span></label>
         </div>
         <div class="radio-option">
             <input type="radio" id="dept_admin" name="department" value="客戶服務部" onchange="toggleDepartment('admin')">
             <label class="radio-label" for="dept_admin"><span>🏢 客戶服務部</span></label>
         </div>
-    </div>
-</div>
-
-<!-- 課程服務部職位 -->
-<div class="form-group" id="course_positions" style="display: none;">
-    <label class="form-label required">您想應徵的職位</label>
-    <div class="radio-group" style="flex-direction: column; gap: 10px;">
         <div class="radio-option">
-            <input type="radio" id="position_trainer" name="position" value="重訓教練" onchange="togglePositionDetails('trainer')">
-            <label class="radio-label" for="position_trainer"><span>💪 重訓教練</span></label>
+            <input type="radio" id="dept_finance" name="department" value="行政財會總務部" onchange="toggleDepartment('finance')" disabled>
+            <label class="radio-label" for="dept_finance" style="opacity: 0.45; cursor: not-allowed;"><span>📂 行政財會總務部 (暫無職缺)</span></label>
         </div>
         <div class="radio-option">
-            <input type="radio" id="position_pilates" name="position" value="器械皮拉提斯教練" onchange="togglePositionDetails('pilates')">
-            <label class="radio-label" for="position_pilates"><span>🧘 器械皮拉提斯教練</span></label>
+            <input type="radio" id="dept_marketing" name="department" value="行銷業務部" onchange="toggleDepartment('marketing')">
+            <label class="radio-label" for="dept_marketing"><span>📣 行銷業務部</span></label>
         </div>
         <div class="radio-option">
-            <input type="radio" id="position_stretch" name="position" value="伸展師" onchange="togglePositionDetails('stretch')">
-            <label class="radio-label" for="position_stretch"><span>🤸 伸展師</span></label>
-        </div>
-        <div class="radio-option">
-            <input type="radio" id="position_ai" name="position" value="AI分析師" onchange="togglePositionDetails('ai')">
-            <label class="radio-label" for="position_ai"><span>🔬 AI分析師</span></label>
+            <input type="radio" id="dept_ai" name="department" value="AI系統研發部" onchange="toggleDepartment('ai')" disabled>
+            <label class="radio-label" for="dept_ai" style="opacity: 0.45; cursor: not-allowed;"><span>🔬 AI系統研發部 (暫無職缺)</span></label>
         </div>
     </div>
 </div>
 
-<!-- 教務部職位 -->
-<div class="form-group" id="education_positions" style="display: none;">
+<!-- 專業服務部 第一層:選組別 -->
+<div class="form-group" id="prof_groups" style="display: none;">
+    <label class="form-label required">您想應徵的組別</label>
+    <div class="radio-group" style="flex-direction: column; gap: 10px;">
+        <div class="radio-option">
+            <input type="radio" id="group_coach" name="prof_group" value="教練服務組" onchange="toggleProfGroup('coach')">
+            <label class="radio-label" for="group_coach"><span>🏋️ 教練服務組</span></label>
+        </div>
+        <div class="radio-option">
+            <input type="radio" id="group_health" name="prof_group" value="健康管理組" onchange="toggleProfGroup('health')">
+            <label class="radio-label" for="group_health"><span>💊 健康管理組</span></label>
+        </div>
+    </div>
+</div>
+
+<!-- 教練服務組職位 -->
+<div class="form-group" id="coach_positions" style="display: none;">
     <label class="form-label required">您想應徵的職位</label>
     <div class="radio-group" style="flex-direction: column; gap: 10px;">
         <div class="radio-option">
-            <input type="radio" id="position_ops_manager" name="position" value="營運經理" onchange="togglePositionDetails('manager')">
-            <label class="radio-label" for="position_ops_manager"><span>📊 營運經理</span></label>
+            <input type="radio" id="position_pilates_lead" name="position" value="皮拉提斯管理組長" onchange="togglePositionDetails('pilates_lead')">
+            <label class="radio-label" for="position_pilates_lead"><span>🧘 皮拉提斯管理組長</span></label>
         </div>
         <div class="radio-option">
-            <input type="radio" id="position_pilates_manager" name="position" value="皮拉提斯教練經理" onchange="togglePositionDetails('manager')">
-            <label class="radio-label" for="position_pilates_manager"><span>🧘 皮拉提斯教練經理</span></label>
+            <input type="radio" id="position_pilates_coach" name="position" value="皮拉提斯教練" onchange="togglePositionDetails('pilates_coach')">
+            <label class="radio-label" for="position_pilates_coach"><span>🧘 皮拉提斯教練</span></label>
         </div>
         <div class="radio-option">
-            <input type="radio" id="position_fitness_manager" name="position" value="重訓健身教練經理" onchange="togglePositionDetails('manager')">
-            <label class="radio-label" for="position_fitness_manager"><span>💪 重訓健身教練經理</span></label>
+            <input type="radio" id="position_strength_lead" name="position" value="重量訓練管理組長" onchange="togglePositionDetails('strength_lead')">
+            <label class="radio-label" for="position_strength_lead"><span>💪 重量訓練管理組長</span></label>
         </div>
         <div class="radio-option">
-            <input type="radio" id="position_stretch_manager" name="position" value="肌肉賦能伸展教練經理" onchange="togglePositionDetails('manager')">
-            <label class="radio-label" for="position_stretch_manager"><span>🤸 肌肉賦能伸展教練經理</span></label>
+            <input type="radio" id="position_strength_coach" name="position" value="重量訓練教練" onchange="togglePositionDetails('strength_coach')">
+            <label class="radio-label" for="position_strength_coach"><span>💪 重量訓練教練</span></label>
+        </div>
+        <div class="radio-option">
+            <input type="radio" id="position_massage_lead" name="position" value="運動按摩管理組長" onchange="togglePositionDetails('massage_lead')">
+            <label class="radio-label" for="position_massage_lead"><span>🤸 運動按摩管理組長</span></label>
+        </div>
+        <div class="radio-option">
+            <input type="radio" id="position_massage_therapist" name="position" value="運動按摩伸展師" onchange="togglePositionDetails('massage_therapist')">
+            <label class="radio-label" for="position_massage_therapist"><span>🤸 運動按摩伸展師</span></label>
+        </div>
+    </div>
+</div>
+
+<!-- 健康管理組職位 -->
+<div class="form-group" id="health_positions" style="display: none;">
+    <label class="form-label required">您想應徵的職位</label>
+    <div class="radio-group" style="flex-direction: column; gap: 10px;">
+        <div class="radio-option">
+            <input type="radio" id="position_consultant" name="position" value="顧問分析師" onchange="togglePositionDetails('consultant')">
+            <label class="radio-label" for="position_consultant"><span>📊 顧問分析師</span></label>
         </div>
     </div>
 </div>
@@ -1485,20 +1504,31 @@
     <label class="form-label required">您想應徵的職位</label>
     <div class="radio-group" style="flex-direction: column; gap: 10px;">
         <div class="radio-option">
-            <input type="radio" id="position_customer_service" name="position" value="營運服務專員" onchange="togglePositionDetails('admin')">
+            <input type="radio" id="position_customer_service" name="position" value="營運服務專員" onchange="togglePositionDetails('customer_service')">
             <label class="radio-label" for="position_customer_service"><span>💁 營運服務專員</span></label>
         </div>
         <div class="radio-option">
-            <input type="radio" id="position_admin_service" name="position" value="行政客服專員" onchange="togglePositionDetails('admin')">
-            <label class="radio-label" for="position_admin_service"><span>📋 行政客服專員</span></label>
+            <input type="radio" id="position_cx_maintain" name="position" value="顧客體驗維護員" onchange="togglePositionDetails('cx_maintain')">
+            <label class="radio-label" for="position_cx_maintain"><span>🤝 顧客體驗維護員</span></label>
         </div>
         <div class="radio-option">
-            <input type="radio" id="position_sales" name="position" value="業務人員" onchange="togglePositionDetails('admin')">
-            <label class="radio-label" for="position_sales"><span>💼 業務人員</span></label>
+            <input type="radio" id="position_admin_cs" name="position" value="行政客服人員" onchange="togglePositionDetails('admin_cs')">
+            <label class="radio-label" for="position_admin_cs"><span>📋 行政客服人員</span></label>
+        </div>
+    </div>
+</div>
+
+<!-- 行銷業務部職位 -->
+<div class="form-group" id="marketing_positions" style="display: none;">
+    <label class="form-label required">您想應徵的職位</label>
+    <div class="radio-group" style="flex-direction: column; gap: 10px;">
+        <div class="radio-option">
+            <input type="radio" id="position_marketing_pm" name="position" value="行銷專案PM" onchange="togglePositionDetails('marketing_pm')">
+            <label class="radio-label" for="position_marketing_pm"><span>📣 行銷專案PM</span></label>
         </div>
         <div class="radio-option">
-            <input type="radio" id="position_marketing" name="position" value="行銷人員" onchange="togglePositionDetails('admin')">
-            <label class="radio-label" for="position_marketing"><span>📣 行銷人員</span></label>
+            <input type="radio" id="position_social_editor" name="position" value="社群客服小編" onchange="togglePositionDetails('social_editor')">
+            <label class="radio-label" for="position_social_editor"><span>💬 社群客服小編</span></label>
         </div>
     </div>
 </div>
@@ -2005,51 +2035,69 @@ const questions = [
         // const API_ENDPOINT = 'https://hook.us2.make.com/7o0t3iisa61knf5wta8yevr8vhspkc9j';
 
         function toggleDepartment(dept) {
-    // 隱藏所有職位選項
-    document.getElementById('course_positions').style.display = 'none';
-    document.getElementById('education_positions').style.display = 'none';
-    document.getElementById('admin_positions').style.display = 'none';
-    
+    // 隱藏所有區塊
+    ['prof_groups','coach_positions','health_positions','admin_positions','marketing_positions'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.style.display = 'none';
+    });
+
     // 隱藏專長和醫學背景
     const trainerSpecialties = document.getElementById('trainer_specialties');
     const aiMedicalBackground = document.getElementById('ai_medical_background');
     if (trainerSpecialties) trainerSpecialties.style.display = 'none';
     if (aiMedicalBackground) aiMedicalBackground.style.display = 'none';
-    
-    // 清除已選的職位
-    const positionRadios = document.querySelectorAll('input[name="position"]');
-    positionRadios.forEach(radio => radio.checked = false);
-    
-    // 清除專長選擇
-    const checkboxes = document.querySelectorAll('input[name="specialty"]');
-    checkboxes.forEach(cb => cb.checked = false);
-    
-    // 顯示對應部門的職位
-    if (dept === 'course') {
-        document.getElementById('course_positions').style.display = 'block';
-    } else if (dept === 'education') {
-        document.getElementById('education_positions').style.display = 'block';
+
+    // 清除已選的組別、職位
+    document.querySelectorAll('input[name="prof_group"]').forEach(r => r.checked = false);
+    document.querySelectorAll('input[name="position"]').forEach(r => r.checked = false);
+    document.querySelectorAll('input[name="specialty"]').forEach(cb => cb.checked = false);
+
+    // 顯示對應部門
+    if (dept === 'prof') {
+        document.getElementById('prof_groups').style.display = 'block';
     } else if (dept === 'admin') {
         document.getElementById('admin_positions').style.display = 'block';
+    } else if (dept === 'marketing') {
+        document.getElementById('marketing_positions').style.display = 'block';
+    }
+}
+
+// 專業服務部的子層(教練服務組/健康管理組)
+function toggleProfGroup(group) {
+    ['coach_positions','health_positions'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.style.display = 'none';
+    });
+    const trainerSpecialties = document.getElementById('trainer_specialties');
+    const aiMedicalBackground = document.getElementById('ai_medical_background');
+    if (trainerSpecialties) trainerSpecialties.style.display = 'none';
+    if (aiMedicalBackground) aiMedicalBackground.style.display = 'none';
+    document.querySelectorAll('input[name="position"]').forEach(r => r.checked = false);
+    document.querySelectorAll('input[name="specialty"]').forEach(cb => cb.checked = false);
+
+    if (group === 'coach') {
+        document.getElementById('coach_positions').style.display = 'block';
+    } else if (group === 'health') {
+        document.getElementById('health_positions').style.display = 'block';
     }
 }
 
         function togglePositionDetails(position) {
     const trainerSpecialties = document.getElementById('trainer_specialties');
     const aiMedicalBackground = document.getElementById('ai_medical_background');
-    
+
     if (trainerSpecialties) trainerSpecialties.style.display = 'none';
     if (aiMedicalBackground) aiMedicalBackground.style.display = 'none';
-    
-    const checkboxes = document.querySelectorAll('input[name="specialty"]');
-    checkboxes.forEach(cb => cb.checked = false);
-    
-    if (position === 'trainer' && trainerSpecialties) {
+    document.querySelectorAll('input[name="specialty"]').forEach(cb => cb.checked = false);
+
+    // 重量訓練教練 + 重量訓練管理組長 顯示專長選擇
+    if ((position === 'strength_coach' || position === 'strength_lead') && trainerSpecialties) {
         trainerSpecialties.style.display = 'block';
-    } else if (position === 'ai' && aiMedicalBackground) {
+    }
+    // 顧問分析師 顯示運動醫學背景題
+    else if (position === 'consultant' && aiMedicalBackground) {
         aiMedicalBackground.style.display = 'block';
     }
-    // manager 和 admin 類型不需要額外欄位
 }
 
         function limitSpecialtySelection(checkbox) {
@@ -2094,7 +2142,7 @@ const questions = [
             positionData.specialty_1 = '';
             positionData.specialty_2 = '';
 
-            if (position.value === '重訓教練') {
+            if (position.value === '重量訓練教練' || position.value === '重量訓練管理組長') {
                 const selectedSpecialties = document.querySelectorAll('input[name="specialty"]:checked');
                 
                 if (selectedSpecialties.length === 0) {
@@ -2125,7 +2173,7 @@ const questions = [
                 });
             }
 
-            if (position.value === 'AI分析師') {
+            if (position.value === '顧問分析師') {
                 const medicalBackground = document.querySelector('input[name="medicalBackground"]:checked');
                 if (!medicalBackground) {
                     alert('請選擇是否有運動醫學或物理治療師相關背景');
@@ -2787,137 +2835,84 @@ function showTalentResult() {
             
             const appliedPosition = positionData.position;
             
-            if (primaryTalent.type === 'dynamo') {
-                description = `您是天生的<strong>創新者</strong><span class="score-badge">優勢天賦</span><br>擅長突破常規、開創新局,適合需要創意思維的職位。您能將新穎的想法轉化為實際行動,在變化快速的環境中如魚得水。`;
-                
-                if (appliedPosition === '重訓教練') {
-                    recommendation = '您的創意天賦非常適合<strong>課程設計</strong>與<strong>訓練創新</strong>!建議您可以:<br>• 開發獨特的訓練課程和動作組合<br>• 為不同客戶設計個性化的訓練計畫<br>• 嘗試結合新興訓練方法,創造差異化服務';
-                } else if (appliedPosition === '器械皮拉提斯教練') {
-                    recommendation = '您的創意能為皮拉提斯教學帶來新意!建議:<br>• 設計創新的器械訓練組合<br>• 開發融合不同風格的課程<br>• 用創意方式解釋動作要領,讓學員更易理解';
-                } else if (appliedPosition === '伸展師') {
-                    recommendation = '您可以在伸展領域發揮創意!建議:<br>• 結合不同伸展技術,創造獨特手法<br>• 開發針對特定需求的伸展方案<br>• 用創新方式提升客戶體驗';
-                } else if (appliedPosition === 'AI分析師') {
-                    recommendation = '您的創新思維很適合AI應用開發!建議:<br>• 探索AI在運動分析的創新應用<br>• 設計更直觀的數據呈現方式<br>• 開發新的評估指標和分析模型';
+            // ═══ 天賦建議查表(11 職位 × 4 天賦)═══
+            const TALENT_RECS = {
+                dynamo: {
+                    desc: `您是天生的<strong>創新者</strong><span class="score-badge">優勢天賦</span><br>擅長突破常規、開創新局,適合需要創意思維的職位。您能將新穎的想法轉化為實際行動,在變化快速的環境中如魚得水。`,
+                    positions: {
+                        '皮拉提斯管理組長': '您的創新思維能帶領皮拉提斯團隊突破!建議:<br>• 開發獨特的課程體系和教學標準<br>• 推動教練團隊的創新訓練方法<br>• 設計差異化的客戶服務體驗',
+                        '皮拉提斯教練': '您的創意能為皮拉提斯教學帶來新意!建議:<br>• 設計創新的器械訓練組合<br>• 開發融合不同風格的課程<br>• 用創意方式解釋動作要領,讓學員更易理解',
+                        '重量訓練管理組長': '您的創新能力適合帶領訓練團隊!建議:<br>• 開發創新的訓練課程和方案<br>• 推動新的教練培訓模式<br>• 引進前沿的訓練理念和方法',
+                        '重量訓練教練': '您的創意天賦非常適合<strong>課程設計</strong>與<strong>訓練創新</strong>!建議:<br>• 開發獨特的訓練課程和動作組合<br>• 為不同客戶設計個性化的訓練計畫<br>• 嘗試結合新興訓練方法,創造差異化服務',
+                        '運動按摩管理組長': '您的創意思維能為按摩服務帶來突破!建議:<br>• 開發創新的按摩技術和流程<br>• 設計獨特的客戶服務體驗<br>• 帶領團隊探索新的服務模式',
+                        '運動按摩伸展師': '您可以在按摩伸展領域發揮創意!建議:<br>• 結合不同伸展技術,創造獨特手法<br>• 開發針對特定需求的伸展方案<br>• 用創新方式提升客戶體驗',
+                        '顧問分析師': '您的創新思維很適合健康分析工作!建議:<br>• 探索數據分析的創新應用方式<br>• 設計更直觀的健康評估報告<br>• 開發新的健康指標和分析模型',
+                        '營運服務專員': '您的創意天賦能提升客戶服務體驗!建議:<br>• 設計創新的客戶服務流程<br>• 開發更有效的客戶溝通方式<br>• 提出改善行政效率的新點子',
+                        '顧客體驗維護員': '您的創意天賦能優化體驗設計!建議:<br>• 設計創新的客戶接觸點和體驗<br>• 開發提升滿意度的新方案<br>• 提出客戶留存的創意策略',
+                        '行政客服人員': '您的創意天賦能優化行政流程!建議:<br>• 提出創新的行政作業改善方案<br>• 設計更有效率的客服溝通方式<br>• 開發跨部門協作的新模式',
+                        '行銷專案PM': '您的創意天賦完美契合行銷工作!建議:<br>• 策劃創新的行銷活動和內容<br>• 開發獨特的品牌傳播方式<br>• 探索新的行銷渠道和手法',
+                        '社群客服小編': '您的創意是社群經營的核心優勢!建議:<br>• 創作有趣、有共鳴的社群內容<br>• 設計創新的互動活動和話題<br>• 用獨特風格建立品牌個性'
+                    }
+                },
+                blaze: {
+                    desc: `您擁有卓越的<strong>熱情與感染力</strong><span class="score-badge">優勢天賦</span><br>善於激勵他人、建立士氣,最適合需要激發團隊動力的職位。您的熱情能點燃他人的潛能,是團隊中的能量核心。`,
+                    positions: {
+                        '皮拉提斯管理組長': '您的親和力能凝聚皮拉提斯團隊!建議:<br>• 營造互助合作的團隊氛圍<br>• 用鼓勵和支持培養教練成長<br>• 建立教練與學員之間的良好關係',
+                        '皮拉提斯教練': '您的親和力能讓學員更投入課程!建議:<br>• 營造溫馨的課堂氛圍<br>• 用鼓勵和正向回饋激勵學員<br>• 建立學員之間的連結和互動',
+                        '重量訓練管理組長': '您的熱情能帶動整個訓練團隊!建議:<br>• 激勵教練團隊的士氣和動力<br>• 建立正向積極的團隊文化<br>• 成為會員和教練之間的橋樑',
+                        '重量訓練教練': '您的人際魅力是教練工作的最大優勢!建議:<br>• 專注於建立深厚的教練-學員關係<br>• 用您的熱情激勵學員突破瓶頸<br>• 發展小團體課程,發揮您的團隊凝聚力<br>• 成為會員社群的核心人物',
+                        '運動按摩管理組長': '您的同理心能打造優質服務團隊!建議:<br>• 培養團隊的服務熱忱<br>• 建立客戶導向的服務文化<br>• 用溫暖的領導凝聚團隊向心力',
+                        '運動按摩伸展師': '您的同理心能提供絕佳的服務體驗!建議:<br>• 深入了解客戶需求,建立信任關係<br>• 用溫暖的互動讓客戶感到放鬆<br>• 成為客戶長期信賴的伸展師',
+                        '顧問分析師': '您能將冰冷的數據變得有溫度!建議:<br>• 用同理心理解客戶需求<br>• 設計更人性化的健康諮詢報告<br>• 擔任技術專業與客戶之間的橋樑',
+                        '營運服務專員': '您的親和力是客服工作的天賦!建議:<br>• 用溫暖的態度服務每位客戶<br>• 建立良好的客戶關係和口碑<br>• 成為客戶信賴的服務窗口',
+                        '顧客體驗維護員': '您的人際魅力是客戶關係的核心!建議:<br>• 用真誠互動建立客戶長期信任<br>• 主動關心客戶、發掘需求<br>• 成為提升客戶滿意度的關鍵人物',
+                        '行政客服人員': '您的親和力是行政客服的天賦!建議:<br>• 用溫暖的態度處理每一位客戶的需求<br>• 成為公司內部跨部門溝通的橋樑<br>• 建立良好的客戶關係,提升整體服務口碑',
+                        '行銷專案PM': '您能讓品牌更有溫度!建議:<br>• 策劃能引發共鳴的行銷內容<br>• 建立品牌與客戶的情感連結<br>• 善用人際網絡擴大品牌影響力',
+                        '社群客服小編': '您天生就是社群人才!建議:<br>• 用熱情真誠回應每位粉絲<br>• 經營有溫度的品牌人設<br>• 培養忠誠的鐵粉社群'
+                    }
+                },
+                tempo: {
+                    desc: `您具備優秀的<strong>執行力與穩定性</strong><span class="score-badge">優勢天賦</span><br>注重細節、流程化思維,擅長將想法落實為標準作業。您的可靠性讓團隊能夠穩定運作,是組織中不可或缺的支柱。`,
+                    positions: {
+                        '皮拉提斯管理組長': '您的細緻度能提升教學品質!建議:<br>• 建立系統化的教練培訓流程<br>• 確保課程品質的一致性<br>• 穩定推動團隊專業成長',
+                        '皮拉提斯教練': '您的細緻度很適合皮拉提斯教學!建議:<br>• 專注於動作的精準指導<br>• 建立系統化的教學流程<br>• 仔細評估學員的身體狀況和進度',
+                        '重量訓練管理組長': '您的穩定性能打造可靠團隊!建議:<br>• 制定完善的教練管理制度<br>• 建立標準化的訓練流程<br>• 確保服務品質的穩定輸出',
+                        '重量訓練教練': '您的系統化思維適合精準訓練!建議:<br>• 建立完整的訓練進度追蹤系統<br>• 專注於<strong>矯正性訓練</strong>和<strong>功能性訓練</strong><br>• 制定詳細的週期化訓練計畫<br>• 精確記錄並分析學員進步數據',
+                        '運動按摩管理組長': '您的系統化思維適合服務管理!建議:<br>• 建立標準化的服務流程<br>• 確保每位客戶獲得一致的體驗<br>• 穩定提升團隊的服務品質',
+                        '運動按摩伸展師': '您的細心能提供專業服務!建議:<br>• 建立標準化的評估和操作流程<br>• 詳細記錄每次服務的重點<br>• 按部就班地執行伸展計畫',
+                        '顧問分析師': '您的系統化思維很適合健康分析!建議:<br>• 建立完整的分析流程和標準<br>• 確保資料品質和分析準確性<br>• 開發可重複使用的諮詢模板',
+                        '營運服務專員': '您的可靠性是服務工作的優勢!建議:<br>• 建立有條理的服務作業流程<br>• 確保各項事務準時完成<br>• 提供穩定可靠的服務品質',
+                        '顧客體驗維護員': '您的細心能精準掌握每位客戶!建議:<br>• 建立完整的客戶追蹤紀錄系統<br>• 按時執行回訪、關懷與檢查<br>• 確保每一個客戶接觸點都到位',
+                        '行政客服人員': '您的可靠性非常適合行政客服工作!建議:<br>• 建立有條理的行政作業 SOP<br>• 精準掌控每一筆客戶資料與進度<br>• 確保各項事務按時、按質完成',
+                        '行銷專案PM': '您的執行力能確保行銷成效!建議:<br>• 制定完整的行銷執行計畫和時程<br>• 確保各項活動按時按質完成<br>• 建立可追蹤的行銷效果指標',
+                        '社群客服小編': '您的穩定性能確保社群品質!建議:<br>• 建立規律的發文節奏與內容排程<br>• 用 SOP 標準化客服回應流程<br>• 持續累積品牌資產與內容素材'
+                    }
+                },
+                steel: {
+                    desc: `您擁有深度的<strong>分析能力</strong><span class="score-badge">優勢天賦</span><br>善於收集資訊、深入研究,在做決策前會充分評估。您的邏輯思維能為組織提供精準的策略建議。`,
+                    positions: {
+                        '皮拉提斯管理組長': '您的專業性能提升團隊水準!建議:<br>• 深入研究皮拉提斯理論和技術<br>• 建立科學化的教練評估體系<br>• 用專業知識指導團隊成長',
+                        '皮拉提斯教練': '您的精準度能提升教學品質!建議:<br>• 深入研究解剖學和動作力學<br>• 精確分析學員的動作模式<br>• 用理論支持您的教學方法',
+                        '重量訓練管理組長': '您的分析力適合科學化管理!建議:<br>• 深入研究訓練科學和方法論<br>• 建立數據化的績效評估系統<br>• 用專業分析提升團隊教學品質',
+                        '重量訓練教練': '您的分析力適合科學化訓練!建議:<br>• 深入研究運動科學和訓練理論<br>• 專注於<strong>力量訓練</strong>的數據化管理<br>• 用科學方法分析訓練效果<br>• 為學員提供基於數據的訓練建議',
+                        '運動按摩管理組長': '您的專業深度是團隊的基石!建議:<br>• 深入研究筋膜理論和身體結構<br>• 建立科學化的服務評估標準<br>• 用專業知識培訓和指導團隊',
+                        '運動按摩伸展師': '您的專業性能建立信任!建議:<br>• 深入學習筋膜理論和身體結構<br>• 精準評估客戶的身體狀況<br>• 用專業知識解釋服務原理',
+                        '顧問分析師': '您的天賦完美契合分析師工作!建議:<br>• 深入研究健康科學與評估方法論<br>• 建立嚴謹的分析方法和標準<br>• 用數據洞察為客戶提供精準建議<br>• 持續優化評估模型的準確性',
+                        '營運服務專員': '您的細心能確保工作準確!建議:<br>• 仔細處理每一項服務細節<br>• 建立完整的客戶資料管理<br>• 用精準的資訊回應客戶需求',
+                        '顧客體驗維護員': '您的分析力能找出體驗痛點!建議:<br>• 深入分析客戶回饋與行為數據<br>• 用結構化方式找出流失原因<br>• 提出基於數據的改善方案',
+                        '行政客服人員': '您的細心能讓行政客服工作零失誤!建議:<br>• 精準處理客戶資料與行政文件<br>• 用系統化思維整理與分析客戶問題<br>• 建立完整的客服紀錄與回應流程',
+                        '行銷專案PM': '您的分析能力是行銷成功的關鍵!建議:<br>• 深入分析市場數據和消費者行為<br>• 用數據優化行銷策略和投放<br>• 建立精準的行銷效果追蹤體系',
+                        '社群客服小編': '您的分析力能精準經營社群!建議:<br>• 深入分析貼文成效和粉絲互動數據<br>• 用數據找出最佳發文時段與題材<br>• 建立可追蹤的社群成長指標'
+                    }
                 }
-                // 教務部職位
-else if (appliedPosition === '營運經理') {
-    recommendation = '您的創新思維很適合營運管理!建議:<br>• 推動創新的營運模式和流程優化<br>• 開發新的服務項目和商業模式<br>• 帶領團隊突破傳統思維框架';
-} else if (appliedPosition === '皮拉提斯教練經理') {
-    recommendation = '您的創意天賦能帶領皮拉提斯團隊創新!建議:<br>• 開發獨特的課程體系和教學方法<br>• 推動教練團隊的創新培訓<br>• 設計差異化的服務體驗';
-} else if (appliedPosition === '重訓健身教練經理') {
-    recommendation = '您的創新能力適合帶領健身團隊!建議:<br>• 開發創新的訓練課程和方案<br>• 推動新的教練培訓模式<br>• 引進前沿的訓練理念和方法';
-} else if (appliedPosition === '肌肉賦能伸展教練經理') {
-    recommendation = '您的創意思維能為伸展服務帶來突破!建議:<br>• 開發創新的伸展技術和流程<br>• 設計獨特的客戶服務體驗<br>• 帶領團隊探索新的服務模式';
-}
-// 客戶服務部職位
-else if (appliedPosition === '營運服務專員') {
-    recommendation = '您的創意天賦能提升客戶服務體驗!建議:<br>• 設計創新的客戶服務流程<br>• 開發更有效的客戶溝通方式<br>• 提出改善行政效率的新點子';
-} else if (appliedPosition === '業務人員') {
-    recommendation = '您的創新思維是業務開發的優勢!建議:<br>• 開發獨特的銷售策略和話術<br>• 設計創新的客戶開發方案<br>• 提出差異化的產品組合建議';
-} else if (appliedPosition === '行銷人員') {
-    recommendation = '您的創意天賦完美契合行銷工作!建議:<br>• 策劃創新的行銷活動和內容<br>• 開發獨特的品牌傳播方式<br>• 探索新的行銷渠道和手法';
-} else if (appliedPosition === '行政客服專員') {
-    recommendation = '您的創意天賦能優化行政流程!建議:<br>• 提出創新的行政作業改善方案<br>• 設計更有效率的客服溝通方式<br>• 開發跨部門協作的新模式';
-}
-            } else if (primaryTalent.type === 'blaze') {
-                description = `您擁有卓越的<strong>熱情與感染力</strong><span class="score-badge">優勢天賦</span><br>善於激勵他人、建立士氣,最適合需要激發團隊動力的職位。您的熱情能點燃他人的潛能,是團隊中的能量核心。`;
-                
-                if (appliedPosition === '重訓教練') {
-                    recommendation = '您的人際魅力是教練工作的最大優勢!建議:<br>• 專注於建立深厚的教練-學員關係<br>• 用您的熱情激勵學員突破瓶頸<br>• 發展小團體課程,發揮您的團隊凝聚力<br>• 成為會員社群的核心人物';
-                } else if (appliedPosition === '器械皮拉提斯教練') {
-                    recommendation = '您的親和力能讓學員更投入課程!建議:<br>• 營造溫馨的課堂氛圍<br>• 用鼓勵和正向回饋激勵學員<br>• 建立學員之間的連結和互動';
-                } else if (appliedPosition === '伸展師') {
-                    recommendation = '您的同理心能提供絕佳的服務體驗!建議:<br>• 深入了解客戶需求,建立信任關係<br>• 用溫暖的互動讓客戶感到放鬆<br>• 成為客戶長期信賴的伸展師';
-                } else if (appliedPosition === 'AI分析師') {
-                    recommendation = '您能將冰冷的數據變得有溫度!建議:<br>• 用同理心理解使用者需求<br>• 設計更人性化的分析報告<br>• 擔任技術團隊與客戶之間的橋樑';
-                }
-                // 教務部職位
-else if (appliedPosition === '營運經理') {
-    recommendation = '您的人際魅力是管理團隊的最大優勢!建議:<br>• 建立溫暖正向的團隊文化<br>• 用熱情激勵員工達成目標<br>• 成為跨部門溝通的橋樑';
-} else if (appliedPosition === '皮拉提斯教練經理') {
-    recommendation = '您的親和力能凝聚教練團隊!建議:<br>• 營造互助合作的團隊氛圍<br>• 用鼓勵和支持培養教練成長<br>• 建立教練與學員之間的良好關係';
-} else if (appliedPosition === '重訓健身教練經理') {
-    recommendation = '您的熱情能帶動整個健身團隊!建議:<br>• 激勵教練團隊的士氣和動力<br>• 建立正向積極的團隊文化<br>• 成為會員和教練之間的連結';
-} else if (appliedPosition === '肌肉賦能伸展教練經理') {
-    recommendation = '您的同理心能打造優質服務團隊!建議:<br>• 培養團隊的服務熱忱<br>• 建立客戶導向的服務文化<br>• 用溫暖的領導凝聚團隊向心力';
-}
-// 客戶服務部職位
-else if (appliedPosition === '營運服務專員') {
-    recommendation = '您的親和力是客服工作的天賦!建議:<br>• 用溫暖的態度服務每位客戶<br>• 建立良好的客戶關係和口碑<br>• 成為客戶信賴的服務窗口';
-} else if (appliedPosition === '業務人員') {
-    recommendation = '您的人際魅力是業務成功的關鍵!建議:<br>• 用真誠的態度建立客戶信任<br>• 發展長期穩定的客戶關係<br>• 透過人脈網絡開發新客源';
-} else if (appliedPosition === '行銷人員') {
-    recommendation = '您能讓品牌更有溫度!建議:<br>• 策劃能引發共鳴的行銷內容<br>• 建立品牌與客戶的情感連結<br>• 善用人際網絡擴大品牌影響力';
-} else if (appliedPosition === '行政客服專員') {
-    recommendation = '您的親和力是行政客服的天賦!建議:<br>• 用溫暖的態度處理每一位客戶的需求<br>• 成為公司內部跨部門溝通的橋樑<br>• 建立良好的客戶關係,提升整體服務口碑';
-}
-            } else if (primaryTalent.type === 'tempo') {
-                description = `您具備優秀的<strong>執行力與穩定性</strong><span class="score-badge">優勢天賦</span><br>注重細節、流程化思維,擅長將想法落實為標準作業。您的可靠性讓團隊能夠穩定運作,是組織中不可或缺的支柱。`;
-                
-                if (appliedPosition === '重訓教練') {
-                    recommendation = '您的系統化思維適合精準訓練!建議:<br>• 建立完整的訓練進度追蹤系統<br>• 專注於<strong>矯正性訓練</strong>和<strong>功能性訓練</strong><br>• 制定詳細的週期化訓練計畫<br>• 精確記錄並分析學員進步數據';
-                } else if (appliedPosition === '器械皮拉提斯教練') {
-                    recommendation = '您的細緻度很適合皮拉提斯教學!建議:<br>• 專注於動作的精準指導<br>• 建立系統化的教學流程<br>• 仔細評估學員的身體狀況和進度';
-                } else if (appliedPosition === '伸展師') {
-                    recommendation = '您的細心能提供專業服務!建議:<br>• 建立標準化的評估和操作流程<br>• 詳細記錄每次服務的重點<br>• 按部就班地執行伸展計畫';
-                } else if (appliedPosition === 'AI分析師') {
-                    recommendation = '您的系統化思維很適合數據分析!建議:<br>• 建立完整的分析流程和標準<br>• 確保數據品質和分析準確性<br>• 開發可重複使用的分析模板';
-                }
-                // 教務部職位
-else if (appliedPosition === '營運經理') {
-    recommendation = '您的執行力能確保營運穩定!建議:<br>• 建立標準化的營運流程<br>• 確保各項工作按計劃執行<br>• 穩定推動團隊達成目標';
-} else if (appliedPosition === '皮拉提斯教練經理') {
-    recommendation = '您的細緻度能提升教學品質!建議:<br>• 建立系統化的教練培訓流程<br>• 確保課程品質的一致性<br>• 穩定推動團隊專業成長';
-} else if (appliedPosition === '重訓健身教練經理') {
-    recommendation = '您的穩定性能打造可靠團隊!建議:<br>• 制定完善的教練管理制度<br>• 建立標準化的訓練流程<br>• 確保服務品質的穩定輸出';
-} else if (appliedPosition === '肌肉賦能伸展教練經理') {
-    recommendation = '您的系統化思維適合服務管理!建議:<br>• 建立標準化的服務流程<br>• 確保每位客戶獲得一致的體驗<br>• 穩定提升團隊的服務品質';
-}
-// 客戶服務部職位
-else if (appliedPosition === '營運服務專員') {
-    recommendation = '您的可靠性是服務工作的優勢!建議:<br>• 建立有條理的服務作業流程<br>• 確保各項事務準時完成<br>• 提供穩定可靠的服務品質';
-} else if (appliedPosition === '業務人員') {
-    recommendation = '您的穩定性能建立客戶信任!建議:<br>• 建立系統化的客戶跟進流程<br>• 按部就班地開發和維護客戶<br>• 用可靠的服務贏得客戶長期合作';
-} else if (appliedPosition === '行銷人員') {
-    recommendation = '您的執行力能確保行銷成效!建議:<br>• 制定完整的行銷執行計畫<br>• 確保各項活動按時按質完成<br>• 建立可追蹤的行銷效果指標';
-} else if (appliedPosition === '行政客服專員') {
-    recommendation = '您的可靠性非常適合行政客服工作!建議:<br>• 建立有條理的行政作業 SOP<br>• 精準掌控每一筆客戶資料與進度<br>• 確保各項事務按時、按質完成';
-}
-            } else {
-                description = `您擁有深度的<strong>分析能力</strong><span class="score-badge">優勢天賦</span><br>善於收集資訊、深入研究,在做決策前會充分評估。您的邏輯思維能為組織提供精準的策略建議。`;
-                
-                if (appliedPosition === '重訓教練') {
-                    recommendation = '您的分析力適合科學化訓練!建議:<br>• 深入研究運動科學和訓練理論<br>• 專注於<strong>力量訓練</strong>的數據化管理<br>• 用科學方法分析訓練效果<br>• 為學員提供基於數據的訓練建議';
-                } else if (appliedPosition === '器械皮拉提斯教練') {
-                    recommendation = '您的精準度能提升教學品質!建議:<br>• 深入研究解剖學和動作力學<br>• 精確分析學員的動作模式<br>• 用理論支持您的教學方法';
-                } else if (appliedPosition === '伸展師') {
-                    recommendation = '您的專業性能建立信任!建議:<br>• 深入學習筋膜理論和身體結構<br>• 精準評估客戶的身體狀況<br>• 用專業知識解釋服務原理';
-                } else if (appliedPosition === 'AI分析師') {
-                    recommendation = '您的天賦完美契合AI分析工作!建議:<br>• 深入研究機器學習和數據科學<br>• 建立嚴謹的分析方法論<br>• 用數據洞察為決策提供支持<br>• 持續優化分析模型的準確性';
-                }
-                // 教務部職位
-else if (appliedPosition === '營運經理') {
-    recommendation = '您的分析能力是營運決策的利器!建議:<br>• 深入分析營運數據和績效指標<br>• 用數據驅動的方式優化流程<br>• 建立完善的營運監控體系';
-} else if (appliedPosition === '皮拉提斯教練經理') {
-    recommendation = '您的專業性能提升團隊水準!建議:<br>• 深入研究皮拉提斯理論和技術<br>• 建立科學化的教練評估體系<br>• 用專業知識指導團隊成長';
-} else if (appliedPosition === '重訓健身教練經理') {
-    recommendation = '您的分析力適合科學化管理!建議:<br>• 深入研究訓練科學和方法論<br>• 建立數據化的績效評估系統<br>• 用專業分析提升團隊教學品質';
-} else if (appliedPosition === '肌肉賦能伸展教練經理') {
-    recommendation = '您的專業深度是團隊的基石!建議:<br>• 深入研究筋膜理論和身體結構<br>• 建立科學化的服務評估標準<br>• 用專業知識培訓和指導團隊';
-}
-// 客戶服務部職位
-else if (appliedPosition === '營運服務專員') {
-    recommendation = '您的細心能確保工作準確!建議:<br>• 仔細處理每一項服務細節<br>• 建立完整的客戶資料管理<br>• 用精準的資訊回應客戶需求';
-} else if (appliedPosition === '業務人員') {
-    recommendation = '您的分析力能精準掌握客戶!建議:<br>• 深入分析客戶需求和市場趨勢<br>• 用數據支持業務決策和策略<br>• 建立完整的客戶分析資料庫';
-} else if (appliedPosition === '行銷人員') {
-    recommendation = '您的分析能力是行銷成功的關鍵!建議:<br>• 深入分析市場數據和消費者行為<br>• 用數據優化行銷策略和投放<br>• 建立精準的行銷效果追蹤體系';
-} else if (appliedPosition === '行政客服專員') {
-    recommendation = '您的細心能讓行政客服工作零失誤!建議:<br>• 精準處理客戶資料與行政文件<br>• 用系統化思維整理與分析客戶問題<br>• 建立完整的客服紀錄與回應流程';
-}
-            }
-            
-            const primaryPercentage = (primaryTalent.score / primaryTalent.max) * 100;
+            };
+
+            const _talentInfo = TALENT_RECS[primaryTalent.type] || TALENT_RECS.dynamo;
+            description = _talentInfo.desc;
+            recommendation = _talentInfo.positions[appliedPosition] ||
+                '您的天賦特質為團隊帶來獨特價值。建議在工作中持續發揮優勢,並與不同特質的同事互補合作,共同創造最佳成果。';
+
+                        const primaryPercentage = (primaryTalent.score / primaryTalent.max) * 100;
             const secondaryPercentage = (secondaryTalent.score / secondaryTalent.max) * 100;
             
             if (Math.abs(primaryPercentage - secondaryPercentage) <= 20 && secondaryPercentage >= 40) {
