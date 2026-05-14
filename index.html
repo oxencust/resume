@@ -1463,7 +1463,7 @@
     <div class="radio-group" style="flex-direction: column; gap: 10px;">
         <div class="radio-option">
             <input type="radio" id="position_pilates_lead" name="position" value="皮拉提斯管理組長" onchange="togglePositionDetails('pilates_lead')">
-            <label class="radio-label" for="position_pilates_lead"><span>🧘 皮拉提斯管理組長</span></label>
+            <label class="radio-label" for="position_pilates_lead"><span>👑🧘 皮拉提斯管理組長</span></label>
         </div>
         <div class="radio-option">
             <input type="radio" id="position_pilates_coach" name="position" value="皮拉提斯教練" onchange="togglePositionDetails('pilates_coach')">
@@ -1471,7 +1471,7 @@
         </div>
         <div class="radio-option">
             <input type="radio" id="position_strength_lead" name="position" value="重量訓練管理組長" onchange="togglePositionDetails('strength_lead')">
-            <label class="radio-label" for="position_strength_lead"><span>💪 重量訓練管理組長</span></label>
+            <label class="radio-label" for="position_strength_lead"><span>👑💪 重量訓練管理組長</span></label>
         </div>
         <div class="radio-option">
             <input type="radio" id="position_strength_coach" name="position" value="重量訓練教練" onchange="togglePositionDetails('strength_coach')">
@@ -1479,7 +1479,7 @@
         </div>
         <div class="radio-option">
             <input type="radio" id="position_massage_lead" name="position" value="運動按摩管理組長" onchange="togglePositionDetails('massage_lead')">
-            <label class="radio-label" for="position_massage_lead"><span>🤸 運動按摩管理組長</span></label>
+            <label class="radio-label" for="position_massage_lead"><span>👑🤸 運動按摩管理組長</span></label>
         </div>
         <div class="radio-option">
             <input type="radio" id="position_massage_therapist" name="position" value="運動按摩伸展師" onchange="togglePositionDetails('massage_therapist')">
@@ -3443,23 +3443,7 @@ async function submitForm() {
             }
 
             try {
-                // ── Step 1：拿 ImageKit 簽章（同一 token 可在 expire 內重複用）──
-                console.log('[upload] 取 ImageKit 簽章...');
-                const authResp = await fetch(API_ENDPOINT, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ action: 'getImageKitAuth' })
-                });
-                if (!authResp.ok) {
-                    throw new Error('ImageKit 簽章取得失敗 (' + authResp.status + ')');
-                }
-                const authJson = await authResp.json();
-                if (!authJson.success) {
-                    throw new Error('ImageKit 簽章回應錯誤: ' + (authJson.error || 'unknown'));
-                }
-                const ikAuth = authJson;
-
-                // ── Step 2：算出本次投遞的 ImageKit 資料夾 ──
+                // ── Step 1：算出本次投遞的 ImageKit 資料夾 ──
                 //   格式：/recruitment/YYYYMMDD姓名/
                 //   例：  /recruitment/20260514王小明/
                 //   注意：同名同天會混進同一個資料夾（folder 內檔名靠 useUniqueFileName 防覆蓋）
@@ -3472,17 +3456,34 @@ async function submitForm() {
                 const uploadFolder = `/recruitment/${dateStr}${safeName}`;
                 console.log('[upload] 資料夾:', uploadFolder);
 
-                // ── Step 3：上傳 helper（folder 寫死本次的 uploadFolder）──
+                // ── Step 2：上傳 helper ──
+                //   ⚠️ ImageKit 規定每個 token 只能用一次（用過就回 400 "token has been used before"）
+                //      所以每次上傳都要跟 resume-service 拿新的簽章
                 async function uploadToImageKit(fileOrDataUrl, fileName) {
+                    // 2.1 拿一次性簽章
+                    const authResp = await fetch(API_ENDPOINT, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ action: 'getImageKitAuth' })
+                    });
+                    if (!authResp.ok) {
+                        throw new Error('ImageKit 簽章取得失敗 (' + authResp.status + ')');
+                    }
+                    const auth = await authResp.json();
+                    if (!auth.success) {
+                        throw new Error('ImageKit 簽章回應錯誤: ' + (auth.error || 'unknown'));
+                    }
+
+                    // 2.2 上傳
                     const fd = new FormData();
                     fd.append('file', fileOrDataUrl);
                     fd.append('fileName', fileName);
                     fd.append('folder', uploadFolder);
                     fd.append('useUniqueFileName', 'true');
-                    fd.append('publicKey', ikAuth.publicKey);
-                    fd.append('signature', ikAuth.signature);
-                    fd.append('expire', String(ikAuth.expire));
-                    fd.append('token', ikAuth.token);
+                    fd.append('publicKey', auth.publicKey);
+                    fd.append('signature', auth.signature);
+                    fd.append('expire', String(auth.expire));
+                    fd.append('token', auth.token);
 
                     const r = await fetch('https://upload.imagekit.io/api/v1/files/upload', {
                         method: 'POST',
@@ -3495,7 +3496,7 @@ async function submitForm() {
                     return result.url;
                 }
 
-                // ── Step 4：上傳所有圖片 ──
+                // ── Step 3：上傳所有圖片 ──
                 const image_urls = [];
                 const imageFileNames = [];
                 for (let i = 0; i < imageFiles.length; i++) {
@@ -3507,7 +3508,7 @@ async function submitForm() {
                     imageFileNames.push(original.name);
                 }
 
-                // ── Step 5：上傳所有 PDF ──
+                // ── Step 4：上傳所有 PDF ──
                 const pdf_urls = [];
                 const pdfFileNames = [];
                 for (let i = 0; i < pdfFiles.length; i++) {
@@ -3518,7 +3519,7 @@ async function submitForm() {
                     pdfFileNames.push(original.name);
                 }
 
-                // ── Step 6：上傳兩張雷達圖 ──
+                // ── Step 5：上傳兩張雷達圖 ──
                 const talentChartCanvas = document.getElementById('talentChart');
                 let talentChartUrl = '';
                 if (talentChartCanvas) {
@@ -3535,7 +3536,7 @@ async function submitForm() {
                     lifeValueChartUrl = await uploadToImageKit(dataUrl, 'life-value-chart.png');
                 }
 
-                // ── Step 7：組 payload（純 JSON，無 base64）──
+                // ── Step 6：組 payload（純 JSON，無 base64）──
                 const formData = {
                     action: 'submitApplication',
 
@@ -3608,7 +3609,7 @@ async function submitForm() {
 
                 console.log('[submit] payload bytes:', JSON.stringify(formData).length);
 
-                // ── Step 8：送 resume-service ──
+                // ── Step 7：送 resume-service ──
                 const response = await fetch(API_ENDPOINT, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
