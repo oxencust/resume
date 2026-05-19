@@ -1713,7 +1713,7 @@
 
             <div class="form-group">
                 <label class="form-label required">最高學歷</label>
-                <select class="form-input" id="highestEducation" required>
+                <select class="form-input" id="highestEducation" required onchange="toggleSchoolNameField()">
                     <option value="">請選擇</option>
                     <option value="高中/職">高中/職</option>
                     <option value="專科">專科</option>
@@ -1721,6 +1721,11 @@
                     <option value="碩士">碩士</option>
                     <option value="博士">博士</option>
                 </select>
+            </div>
+
+            <div class="form-group" id="schoolNameWrap" style="display: none;">
+                <label class="form-label required">學校名稱</label>
+                <input type="text" class="form-input" id="schoolName" placeholder="例如:國立臺灣大學" autocomplete="off">
             </div>
 
             <div class="nav-buttons">
@@ -2344,6 +2349,20 @@ function toggleProfGroup(group) {
 
             updateProgress();
         };
+
+        function toggleSchoolNameField() {
+            const sel = document.getElementById('highestEducation');
+            const wrap = document.getElementById('schoolNameWrap');
+            const input = document.getElementById('schoolName');
+            if (sel.value) {
+                wrap.style.display = 'block';
+                input.required = true;
+            } else {
+                wrap.style.display = 'none';
+                input.required = false;
+                input.value = '';
+            }
+        }
 
         function toggleWork3YearsQuestion(hasWork) {
             const yesQuestion = document.getElementById('work3years_yes_question');
@@ -2988,6 +3007,7 @@ function nextSection(current) {
                 const birthDay = document.getElementById('birthDay').value;
                 const email = document.getElementById('email').value.trim();
                 const highestEducation = document.getElementById('highestEducation').value;
+                const schoolName = document.getElementById('schoolName').value.trim();
 
                 if (!name) {
                     alert('請填寫姓名');
@@ -3016,6 +3036,11 @@ function nextSection(current) {
 
                 if (!highestEducation) {
                     alert('請選擇最高學歷');
+                    return;
+                }
+
+                if (!schoolName) {
+                    alert('請填寫學校名稱');
                     return;
                 }
 
@@ -3384,8 +3409,9 @@ async function submitForm() {
             const birthDay = document.getElementById('birthDay').value;
             const email = document.getElementById('email').value.trim();
             const highestEducation = document.getElementById('highestEducation').value;
+            const schoolName = document.getElementById('schoolName').value.trim();
 
-            if (!name || !phone || !gender || !birthYear || !birthMonth || !birthDay || !email || !highestEducation) {
+            if (!name || !phone || !gender || !birthYear || !birthMonth || !birthDay || !email || !highestEducation || !schoolName) {
                 alert('請填寫所有必填欄位');
                 return;
             }
@@ -3576,6 +3602,7 @@ async function submitForm() {
                     birthday: birthday,
                     email: email,
                     highestEducation: highestEducation,
+                    schoolName: schoolName,
 
                     // 天賦分數
                     talent_dynamo: talentScores.dynamo || 0,
